@@ -1,0 +1,22 @@
+{
+  "name": "Explorando",
+  "version": "1.0.0",
+  "description": "Web de rutas",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.3",
+    "express-session": "^1.13.0",
+    "fs": "0.0.2",
+    "mongoose": "^4.3.3",
+    "multer": "^1.1.0",
+    "passport": "^0.3.2",
+    "passport-twitter": "^1.0.4",
+    "paypal-rest-sdk": "^1.6.8",
+    "sendgrid": "^1.9.2",
+    "twitter": "^1.2.5"
+  },
+  "engines": {
+    "node": "5.3.0"
+  }
+}

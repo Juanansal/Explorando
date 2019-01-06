@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+<title>Arbol</title>
+<style>
+    body {
+        background-color: #EEEEEE;
+    }
+</style>
+
+
+
+<script type="x-shader/x-vertex" id="vshader-source">
+    attribute vec3 a_coords;
+    uniform mat4 modelviewProjection;
+    void main() {
+        vec4 coords = vec4(a_coords,1.0);
+        gl_Position = modelviewProjection * coords;
+    }
+</script>
+
+<script type="x-shader/x-fragment" id="fshader-source">
+    #ifdef GL_FRAGMENT_PRECISION_HIGH
+       precision highp float;
+    #else
+       precision mediump float;
+    #endif
+    uniform vec4 color;
+    void main() {
+        gl_FragColor = color;
+    }
+</script>
+
+<script src="js/gl-matrix-min.js"></script>
+<script src="js/motor.js"></script>
+
+<script>
+
+	var escena = MOTOR.crearEscena();
+
+function init() 
+{
+    var canvas = document.getElementById("webglcanvas");
+    gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+
+    initGL();  // initialize the WebGL graphics context  
+	
+
+	document.addEventListener("keydown", doKey, false);
+	
+	var entidadTransform = MOTOR.crearTransform();
+    entidadTransform.setRotacion(0,0,0);
+	entidadTransform.setEscalado(0.7,1,0.5);
+	entidadTransform.setTranslacion(0,-1,2);
+	
+	var transGeneral = MOTOR.addTransform(entidadTransform, escena); 
+	// Creo La figura que cargare desde un Json
+ 
+	var entidadMesh = MOTOR.crearMesh();
+ 
+	// Meto la entidad mesh en un nuevo nodo y lo añado al arbol
+	var mesh = MOTOR.addMesh(entidadMesh, transGeneral); 
+	
+	
+	
+	// Dibujado de todo
+	MOTOR.draw();
+	
+    //draw();
+}
+
+</script>
+
+
+</head>
+<body onload="init()">
+
+<h1 align="center">MOTOR</h1>
+
+
+
+<noscript><hr><h3>This page requires Javascript and a web browser that supports WebGL</h3><hr></noscript>
+
+<div align="center" id="canvas-holder">
+   <canvas width=600 height=600 id="webglcanvas" style="background-color:red"></canvas>
+</div>
+
+
+</body>
+</html>
+

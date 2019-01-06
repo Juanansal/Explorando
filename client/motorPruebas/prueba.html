@@ -1,0 +1,38 @@
+<html>
+<head>
+	<script src="quartz.js"></script>
+	<script type="text/javascript" src="http://k3d.ivank.net/K3D.js"></script>
+	<script type="text/javascript" src="glmatrix.js"></script>
+	<script type="text/javascript" src="k3d.js"></script>
+	<script>
+	
+	console.log('Iniciar Motor');
+	
+	function load()
+	{
+		document.getElementById("webgl").width = window.innerWidth;
+		document.getElementById("webgl").height = window.innerHeight;
+	
+		var root = QUARTZ.getRoot();
+		
+		var trans = QUARTZ.createTransform();
+		trans.setTraslation(0,0,-7);
+		trans.addRotation(90, [1,0,0]);
+		trans.setScale(2);
+		
+		var shape = QUARTZ.createMesh();
+		//shape.loadModel("DIAMOND.obj");
+		//shape.color = [1,0,0,1]; //RGBA
+		//shape.loadTexture("texture.png");
+		
+	}
+  	//	QUARTZ.init("webgl");
+
+	
+	</script>
+</head>
+<body onload="load()">
+	<canvas id="webgl"></canvas>
+
+</body>
+</html>

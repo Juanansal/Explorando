@@ -1,0 +1,281 @@
+<html>
+<head>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+
+	#modelSelector{
+		position: absolute;
+		top:0;
+		right: 0;
+	}
+	</style>
+	<script>
+		var db0=0;
+		var db1=0;
+		var db2=0;
+		var db3=0;
+		var db4=0;
+		var db5=0;
+		var db6=0;
+		var db7=0;
+		var mindb0=110;
+		var mindb1=110;
+		var mindb2=110;
+		var mindb3=110;
+		var mindb4=110;
+		var mindb5=110;
+		var mindb6=110;
+		var mindb7=110;
+		var maxinput=0;
+		var bTranslate = 1.6;
+	</script>
+	<script src="quartz.js"></script>
+	<!--<script src="../audiojs/audio3.js"></script> -->
+	<script>
+	
+	var globalTrasform;
+	var spheresTrasform;
+	var musicNoteTransformation;
+	var light;
+	var angle;
+	var mindb = 10000;
+	var backTrasform = 1.6;
+
+	window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+
+	function load(){
+		document.getElementById("webgl").width = window.innerWidth;
+		document.getElementById("webgl").height = window.innerHeight;
+
+		globalTrasform = QUARTZ.createTransform();
+		globalTrasform.setTraslation(0,0,-7);
+			
+		backTrasform = QUARTZ.createTransform();
+		backTrasform.setTraslation(1.6,-14,-70);
+		backTrasform.setScale(90,90,90);
+
+
+		spheresTrasform = QUARTZ.createTransform();
+		spheresTrasform.addRotation(0,[1,0,0]);
+		spheresTrasform.addRotation(0,[-1,0,1]);
+
+		sphere0Trasform = QUARTZ.createTransform();
+		sphere0Trasform.setTraslation(0,2,0);
+		sphere0Trasform.setScale(0.2,0.2,0.2);
+		
+		sphere1Trasform = QUARTZ.createTransform();
+		sphere1Trasform.setTraslation(1.5,1.5,0);
+		sphere1Trasform.setScale(0.2,0.2,0.2);
+		
+		sphere2Trasform = QUARTZ.createTransform();
+		sphere2Trasform.setTraslation(2,0.0,0);
+		sphere2Trasform.setScale(0.2,0.2,0.2);
+		
+		sphere3Trasform = QUARTZ.createTransform();
+		sphere3Trasform.setTraslation(1.5,-1.5,0);
+		sphere3Trasform.setScale(0.2,0.2,0.2);
+		
+		sphere4Trasform = QUARTZ.createTransform();
+		sphere4Trasform.setTraslation(0,-2,0);
+		sphere4Trasform.setScale(0.2,0.2,0.2);
+		
+		sphere5Trasform = QUARTZ.createTransform();
+		sphere5Trasform.setTraslation(-1.5,-1.5,0);
+		sphere5Trasform.setScale(0.2,0.2,0.2);
+		
+		sphere6Trasform = QUARTZ.createTransform();
+		sphere6Trasform.setTraslation(-2,0,0);
+		sphere6Trasform.setScale(0.2,0.2,0.2);
+		
+		sphere7Trasform = QUARTZ.createTransform();
+		sphere7Trasform.setTraslation(-1.5,1.5,0);
+		sphere7Trasform.setScale(0.2,0.2,0.2);
+
+		musicNoteTransformation = QUARTZ.createTransform();
+		musicNoteTransformation.addRotation(90, [0, 1, 0]);
+		musicNoteTransformation.addRotation(0, [0, 1, 0]);
+		musicNoteTransformation.setScale(12,12,12);
+
+		
+		var root = QUARTZ.getRoot();
+
+		var back = QUARTZ.createMesh();
+		back.loadModel("cube.obj");
+		back.color=[1,1,1,1];
+		back.textureURL="quads.png";
+
+		musicnote = QUARTZ.createMesh();
+		musicnote.loadModel("MusicNote.obj");
+		musicnote.color=[1,1,1,1];
+
+		sphere0 = QUARTZ.createMesh();
+		sphere0.loadModel("spheresimple.obj");
+		sphere0.color=[1,1,1,1];
+
+		sphere1 = QUARTZ.createMesh();
+		sphere1.loadModel("spheresimple.obj");
+		sphere1.color=[1,0,0,1];
+
+		sphere2 = QUARTZ.createMesh();
+		sphere2.loadModel("spheresimple.obj");
+		sphere2.color=[1,1,0,1];
+
+		sphere3 = QUARTZ.createMesh();
+		sphere3.loadModel("spheresimple.obj");
+		sphere3.color=[0,1,0,1];
+
+		sphere4 = QUARTZ.createMesh();
+		sphere4.loadModel("spheresimple.obj");
+		sphere4.color=[0,1,1,1];
+
+		sphere5 = QUARTZ.createMesh();
+		sphere5.loadModel("spheresimple.obj");
+		sphere5.color=[0,0,1,1];
+
+		sphere6 = QUARTZ.createMesh();
+		sphere6.loadModel("spheresimple.obj");
+		sphere6.color=[1,0,1,1];
+
+		sphere7 = QUARTZ.createMesh();
+		sphere7.loadModel("spheresimple.obj");
+		sphere7.color=[0.5,0.5,0.5,1];
+	
+		light = QUARTZ.createLight();
+		light.setLight([0.3,0.3,0.3],[0.9,0.9,1],0.1,[0,10,0],[10,10, -10000], 999999);
+		var tlight = QUARTZ.addLight(light,root);
+	
+		var tGlobal = QUARTZ.addTransform(globalTrasform,root);
+		var tback = QUARTZ.addTransform(backTrasform,tGlobal);
+		var tNote = QUARTZ.addTransform(musicNoteTransformation,tGlobal);
+		var tSpheres = QUARTZ.addTransform(spheresTrasform,tGlobal);
+		var tSphere0 = QUARTZ.addTransform(sphere0Trasform,tSpheres);
+		var tSphere1 = QUARTZ.addTransform(sphere1Trasform,tSpheres);
+		var tSphere2 = QUARTZ.addTransform(sphere2Trasform,tSpheres);
+		var tSphere3 = QUARTZ.addTransform(sphere3Trasform,tSpheres);
+		var tSphere4 = QUARTZ.addTransform(sphere4Trasform,tSpheres);
+		var tSphere5 = QUARTZ.addTransform(sphere5Trasform,tSpheres);
+		var tSphere6 = QUARTZ.addTransform(sphere6Trasform,tSpheres);
+		var tSphere7 = QUARTZ.addTransform(sphere7Trasform,tSpheres);
+
+		QUARTZ.addMesh(back, tback);
+		QUARTZ.addMesh(musicnote, tNote);
+		QUARTZ.addMesh(sphere0, tSphere0);
+		QUARTZ.addMesh(sphere1, tSphere1);
+		QUARTZ.addMesh(sphere2, tSphere2);
+		QUARTZ.addMesh(sphere3, tSphere3);
+		QUARTZ.addMesh(sphere4, tSphere4);
+		QUARTZ.addMesh(sphere5, tSphere5);
+		QUARTZ.addMesh(sphere6, tSphere6);
+		QUARTZ.addMesh(sphere7, tSphere7);
+
+		QUARTZ.init("webgl");
+
+
+  		initGL();
+
+	}
+
+	function onChangeModel(){
+		
+		var model = document.getElementById("modelSelector").options[document.getElementById("modelSelector").selectedIndex].value;
+
+		sphere0.loadModel(model);
+		sphere1.loadModel(model);
+		sphere2.loadModel(model);
+		sphere3.loadModel(model);
+		sphere4.loadModel(model);
+		sphere5.loadModel(model);
+		sphere6.loadModel(model);
+		sphere7.loadModel(model);
+	}
+
+	function initGL(){
+
+			var max = maxinput;
+/*
+		if (songPlaying==1)
+	{
+	
+			if(spheresTrasform.rot[1][0]>=360){spheresTrasform.rot[1][0]=0;}
+			if(musicNoteTransformation.rot[1][0]>=360){musicNoteTransformation.rot[1][0]=0}
+
+
+				if(mindb>max) mindb = max;
+				if(mindb0>db0) mindb0 = db0;
+				if(mindb1>db1) mindb1 = db1;
+				if(mindb2>db2) mindb2 = db2;
+				if(mindb3>db3) mindb3 = db3;
+				if(mindb4>db4) mindb4 = db4;
+				if(mindb5>db5) mindb5 = db5;
+				if(mindb6>db6) mindb6 = db6;
+				if(mindb7>db7) mindb7 = db7;
+
+		spheresTrasform.rot[1][0] = spheresTrasform.rot[1][0]+2;
+		musicNoteTransformation.rot[1][0] = musicNoteTransformation.rot[1][0]+2;
+
+		sphere0Trasform.setScale(8*(0.2-parseFloat(db0-mindb0)/3000-db0/3000)-1);
+		sphere1Trasform.setScale(8*(0.2-parseFloat(db1-mindb1)/3000-db1/3000)-1);
+		sphere2Trasform.setScale(8*(0.2-parseFloat(db2-mindb2)/3000-db2/3000)-1);
+		sphere3Trasform.setScale(8*(0.2-parseFloat(db3-mindb3)/3000-db3/3000)-1);
+		sphere4Trasform.setScale(8*(0.2-parseFloat(db4-mindb4)/3000-db4/3000)-1);
+		sphere5Trasform.setScale(8*(0.2-parseFloat(db5-mindb5)/3000-db5/3000)-1);
+		sphere6Trasform.setScale(8*(0.2-parseFloat(db6-mindb6)/3000-db6/3000)-1);
+		sphere7Trasform.setScale(8*(0.2-parseFloat(db7-mindb7)/3000-db7/3000)-1);
+		
+		if(bTranslate>=11.5) bTranslate=1.5;
+		bTranslate=bTranslate+0.1;
+		backTrasform.setTraslation(bTranslate,-14,-70);
+
+
+		QUARTZ.draw(parseFloat(max-mindb)/400,parseFloat(max-mindb)/400,parseFloat(max-mindb)/400);
+		
+	}
+
+		else{
+*/
+			sphere0Trasform.setScale(0.2);
+			sphere1Trasform.setScale(0.2);
+			sphere2Trasform.setScale(0.2);
+			sphere3Trasform.setScale(0.2);
+			sphere4Trasform.setScale(0.2);
+			sphere5Trasform.setScale(0.2);
+			sphere6Trasform.setScale(0.2);
+			sphere7Trasform.setScale(0.2);
+			QUARTZ.draw(0,0,0);
+		
+
+		requestAnimFrame(initGL);
+	}
+
+	</script>
+</head>
+<body onload="load()">
+
+	<canvas id="webgl"></canvas>
+	<select id="modelSelector" onchange="onChangeModel()">
+		<option value="spheresimple.obj">Spheres</option>
+  		<option value="cubecool.obj">Cubes</option>
+  		<option value="monkey.obj">Monkeys</option>
+  		<option value="DIAMOND.obj">Diamonds</option>
+	</select>
+	<input id="shapeColor" name="shapeColor" type="hidden" />
+	<input id="db0" name="db0" type="hidden" />
+	<input id="db1" name="db1" type="hidden" />
+	<input id="db2" name="db2" type="hidden" />
+	<input id="db3" name="db3" type="hidden" />
+	<input id="db4" name="db4" type="hidden" />
+	<input id="db5" name="db5" type="hidden" />
+	<input id="db6" name="db6" type="hidden" />
+	<input id="db7" name="db7" type="hidden" />
+	<input id="max" name="max" type="hidden" />
+
+</body>
+</html>

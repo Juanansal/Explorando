@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+   <head>
+      <meta charset="utf-8" />
+      <title> Clientes </title>
+      <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+      <script type="text/javascript" src="../angularjs/angular.js"></script>
+      <script type="text/javascript" src="../js/init.js"></script>
+	  <script type="text/javascript" src="../js/controladores/controlador_AdminFotosRuta.js"></script>
+	  
+       
+   </head>
+   <body>
+        <div class="container" ng-controller="AdminFotosRuta" ng-init="cargarFotosRuta()">
+            <h1> Administrar Comentarios </h1>
+            <form action="javascript:void(0);">
+                <div class="row">
+                    <div class="span4">
+                        <label> Url </label>
+                        <input type="text" ng-model="url" />
+                    </div>
+					
+                </div>
+                <div class="row">
+                    <div class="span4">
+                        <input type="submit" value="Guardar" class="btn btn-success" ng-click="guardarFotoRuta()" />
+                        <input type="button" value="Limpiar" class="btn btn-danger" ng-click="limpiarDatos()" />
+                    </div>
+                </div>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> Url </th>
+                        <th> Fecha </th>
+                        <th>  </th>
+                        <th>  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in fotosRuta">
+                        <td> {{item.url}} </td>
+                        <td> {{item.fecha}} </td>
+						
+                        <td> <a href="javascript:void(0);" class="btn btn-info" ng-click="recuperarFotoRuta(item._id)"> Editar </a> </td>
+                        <td> <a href="javascript:void(0);" class="btn btn-danger" ng-click="eliminarFotoRuta(item._id)"> Eliminar </a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

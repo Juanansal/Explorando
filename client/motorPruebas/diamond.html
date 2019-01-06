@@ -1,0 +1,35 @@
+<html>
+<head>
+	<script src="quartz.min.js"></script>
+	<script>
+	
+	  	var root = QUARTZ.getRoot();
+  
+  	var trans = QUARTZ.createTransform();
+  	trans.setTraslation(0,0,-7);
+  	trans.addRotation(90, [1,0,0]);
+  	trans.setScale(2);
+  
+  	var shape = QUARTZ.createMesh();
+  	shape.loadModel("DIAMOND.obj");
+  	shape.color = [1,0,0,1]; //RGBA
+  	shape.loadTexture("wood.png");
+  
+  	var light = QUARTZ.createLight();
+	light.setLight([0.2,0.2,0.2],[0.2,0.2,0.2],0.4,[0,0,0],[-4.4,10,-5],20); //(AMBIENTAL COLOR, DIFFUSE COLOR, SPECULAR FACTOR, DIRECTION, POSITION, INTENSITY)
+  
+  	QUARTZ.addLight(light,root);
+  
+  	var transNode = QUARTZ.addTransform(trans,root);
+  
+  	var shapeNode = QUARTZ.addMesh(shape,root);
+  
+  	QUARTZ.init("webGL"); // "webGL" is canvas ID attribute value
+
+	</script>
+</head>
+<body>
+	<canvas id="webgl"></canvas>
+
+</body>
+</html>

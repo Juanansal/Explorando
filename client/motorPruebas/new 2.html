@@ -1,0 +1,150 @@
+<html>
+<head>
+	<script src="quartz.min.js"></script>
+	<script src="../audiojs/audio2.js"></script>
+	<script>
+	
+	var shape;
+	var transform2;
+	var rotatex;
+	var rotatey;
+	var rotatez;
+	var traslatex;
+	var traslatey;
+	var traslatez;
+	var light;
+	var angle;
+
+	window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+
+	function load(){
+		document.getElementById("webgl").width = window.innerWidth;
+	document.getElementById("webgl").height = window.innerHeight;
+
+		var cristalTrasform = QUARTZ.createTransform();
+		cristalTrasform.addRotation(20,[1,0,0]);
+		cristalTrasform.setTraslation(0,0,-7);
+		cristalTrasform.setScale(2.2,2.2,2.2);
+
+		var baseTrasform = QUARTZ.createTransform();
+		baseTrasform.setTraslation(0,-0.9,0);
+
+		var backTrasform = QUARTZ.createTransform();
+		backTrasform.setTraslation(0,-8,-79);
+		backTrasform.setScale(90,90,90);
+
+		
+		var root = QUARTZ.getRoot();
+		shape = QUARTZ.createMesh();
+		shape.loadModel("DIAMOND.obj");
+		shape.color=[1,1,1,1];
+
+		var crystal = QUARTZ.createMesh();
+		crystal.loadModel("cube.obj");
+		crystal.color=[0.3,0.3,0.3,0.15];
+
+		var base = QUARTZ.createMesh();
+		base.loadModel("cube.obj");
+		base.color=[1,0.6,0,1];
+		base.textureURL="wood.png";
+		
+		var back = QUARTZ.createMesh();
+		back.loadModel("cube.obj");
+		back.color=[1,1,1,1];
+		back.textureURL="museum.png";
+
+
+		transform2 = QUARTZ.createTransform();
+		transform2.addRotation(90,[0,1,0]);
+		transform2.setScale(0.16,0.16,0.16);
+		
+	
+		light = QUARTZ.createLight();
+		light.setLight([0.2,0.2,0.2],[0.2,0.2,0.2],0.4,[0,0,0],[-4.4,10,-5],20);
+		var tlight = QUARTZ.addLight(light,root);
+	
+		var tcrystal = QUARTZ.addTransform(cristalTrasform,root);
+		var tbase = QUARTZ.addTransform(baseTrasform,tcrystal);
+		var tback = QUARTZ.addTransform(backTrasform,tcrystal);
+		var tnodo2 = QUARTZ.addTransform(transform2,tcrystal);
+
+		QUARTZ.addMesh(back, tback);
+		QUARTZ.addMesh(crystal, tcrystal);
+		QUARTZ.addMesh(base, tbase);
+  		QUARTZ.addMesh(shape, tnodo2);
+  		QUARTZ.init("webgl");
+
+  		angle = document.getElementById("angle");
+		rotatex = document.getElementById("rotatex");
+		rotatey = document.getElementById("rotatey");
+		rotatez = document.getElementById("rotatez");
+		traslatex = document.getElementById("traslatex");
+		traslatey = document.getElementById("traslatey");
+		traslatez = document.getElementById("traslatez");
+
+  		initGL();
+	}
+
+	function initGL(){
+		
+		
+
+		QUARTZ.draw();
+	
+
+		if(!parseInt(angle.value)||
+		   !parseInt(rotatex.value)||
+		   !parseInt(rotatey.value)||
+		   !parseInt(rotatez.value)||
+		   !parseInt(traslatex.value)||
+		   !parseInt(traslatey.value)||
+		   !parseInt(traslatez.value)||
+		   angle.value!=""	){
+		   transform2.rot[0][0] =
+		transform2.rot[0][0]+parseFloat(angle.value);
+
+		transform2.rot[0][1][0]=parseFloat(rotatex.value);
+		transform2.rot[0][1][1]=parseFloat(rotatey.value);
+		transform2.rot[0][1][2]=parseFloat(rotatez.value);
+
+		transform2.setTraslation(parseFloat(traslatex.value),parseFloat(traslatey.value),parseFloat(traslatez.value));
+	}
+
+	shape.color = [document.getElementById("shapeColor").value/60,0,0,0.65];
+	if(shape.color[1]>1){ shape.color[3]=shape.color[3]+((shape.color[0]-1)/2)} 
+		var decib = document.getElementById("db").value;
+		light.amb = [0.3+decib/1.4,0.3+decib/1.4,0.3+decib/1.4];
+	
+
+		requestAnimFrame(function() {
+		          initGL();
+		        });
+
+	}
+
+	</script>
+</head>
+<body onload="load()">
+	<canvas id="webgl"></canvas>
+	<br/>
+	<br/>
+	TRASLATE
+	<input id="traslatex" name="traslatex" type="text" placeholder="traslateX" value=0 />
+	<input id="traslatey" name="traslatey" type="text" placeholder="traslateY" value=-0.1 />
+	<input id="traslatez" name="traslatez" type="text" placeholder="traslateZ" value=0 />
+	<br/>
+	<br/>
+	ROTATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input id="angle" name="angle" type="text" placeholder="angle" value=5 />
+	<input id="rotatex" name="rotatex" type="text" placeholder="rotateX" value=0 />
+	<input id="rotatey" name="rotatey" type="text" placeholder="rotateY" value=1 />
+	<input id="rotatez" name="rotatez" type="text" placeholder="rotateZ" value=0  />
+	<input id="shapeColor" name="shapeColor" type="hidden" />
+	<input id="db" name="db" type="hidden" />
+</body>
+</html>

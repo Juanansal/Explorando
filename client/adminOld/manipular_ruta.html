@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+   <head>
+      <meta charset="utf-8" />
+      <title> Clientes </title>
+      <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+      <script type="text/javascript" src="../angularjs/angular.js"></script>
+      <script type="text/javascript" src="../js/init.js"></script>
+	  <script type="text/javascript" src="../js/controladores/controlador_AdminRutas.js"></script>
+	  
+       
+   </head>
+   <body>
+        <div class="container" ng-controller="AdminRutas" ng-init="cargarRutas()">
+            <h1> Administrar Rutas </h1>
+            <form action="javascript:void(0);">
+                <div class="row">
+                    <div class="span4">
+                        <label> Titulo </label>
+                        <input type="text" ng-model="titulo" />
+                    </div>
+					
+                    <div class="span4">                    
+                        <label> Descripcion </label>
+                        <input type="text" ng-model="descripcion" />
+                    </div>
+					
+					 <div class="span4">
+                        <label> Duracion </label>
+                        <input type="text" ng-model="duracion" />
+                    </div>
+					
+					 <div class="span4">
+                        <label> Inicio </label>
+                        <input type="text" ng-model="inicio" />
+                    </div>
+					
+					 <div class="span4">
+                        <label> Llegada </label>
+                        <input type="text" ng-model="llegada" />
+                    </div>
+					
+					 <div class="span4">
+                        <label> Capacidad </label>
+                        <input type="text" ng-model="capacidad" />
+                    </div>
+					
+					 <div class="span4">
+                        <label> Apuntados </label>
+                        <input type="text" ng-model="apuntados" />
+                    </div>
+					
+					 <div class="span4">
+                        <label> Guia </label>
+                        <input type="text" ng-model="guia" />
+                    </div>
+					
+					 <div class="span4">
+                        <label> Precio </label>
+                        <input type="text" ng-model="precio" />
+                    </div>
+					
+                </div>
+                <div class="row">
+                    <div class="span4">
+                        <input type="submit" value="Guardar" class="btn btn-success" ng-click="guardarRuta()" />
+                        <input type="button" value="Limpiar" class="btn btn-danger" ng-click="limpiarDatos()" />
+                    </div>
+                </div>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> Titulo </th>
+                        <th> Descripcion </th>
+                        <th> Fecha </th>
+						<th> Duracion </th>
+						<th> Inicio </th>
+						<th> Llegada </th>
+						<th> Capacidad </th>
+						<th> Apuntados </th>
+						<th> Guia </th>
+						<th> Precio </th>
+                        <th>  </th>
+                        <th>  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in rutas">
+                        <td> {{item.titulo}} </td>
+                        <td> {{item.descripcion}} </td>
+                        <td> {{item.fecha}} </td>
+                        <td> {{item.duracion}} </td>
+						<td> {{item.inicio}} </td>
+						<td> {{item.llegada}} </td>
+						<td> {{item.capacidad}} </td>
+						<td> {{item.apuntados}} </td>
+						<td> {{item.guia}} </td>
+						<td> {{item.precio}} </td>
+						
+                        <td> <a href="javascript:void(0);" class="btn btn-info" ng-click="recuperarCliente(item._id)"> Editar </a> </td>
+                        <td> <a href="javascript:void(0);" class="btn btn-danger" ng-click="eliminarCliente(item._id)"> Eliminar </a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

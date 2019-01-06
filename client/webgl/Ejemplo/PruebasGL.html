@@ -1,0 +1,194 @@
+<html>
+
+<head>
+<title>WebGL .json</title>
+<meta http-equiv='content-type' content='text/html; charset=ISO-8859-1'>
+
+<!-- Librerias JavaScript-->
+<script type='text/javascript' src='js/gl-matrix-min.js'></script>
+<script type='text/javascript' src='js/utils.js'></script>
+
+
+
+<!-- Fragment Shader -->
+<script id='shader-fs' type='x-shader/x-fragment'>
+    #ifdef GL_ES
+    precision highp float;
+    #endif
+    
+    uniform vec3 modelColor;
+
+    void main(void) {
+        gl_FragColor = vec4(modelColor, 1.0); 
+    }
+</script>
+
+<!-- Vertex Shader -->
+<script id='shader-vs' type='x-shader/x-vertex'>
+    attribute vec3 aVertexPosition;
+
+    uniform mat4 uMVMatrix;
+    uniform mat4 uPMatrix;
+
+    void main(void) {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+        gl_PointSize = 3.0;
+    }
+</script>
+
+<script id='code-js' type='text/javascript'>
+var gl = null; // varible contexto WebGL
+var prg = null; // El programa (shaders)
+var c_width = 0; //    Variable para almacenar la anchura del canvas
+var c_height = 0; // Variable para almacenar la altura del canvas
+
+var modelVertexBuffer = null; //El vertex buffer para el modelo
+var modelIndexBuffer = null; // El index buffer para el modelo
+
+var mvMatrix = mat4.create(); // La matriz Model-View
+var pMatrix = mat4.create(); // La matriz proyeccion 
+
+var model = undefined;
+var modelLoaded = false;
+
+
+function initProgram() {
+    var fgShader = utils.getShader(gl, 'shader-fs');
+    var vxShader = utils.getShader(gl, 'shader-vs');
+
+    prg = gl.createProgram();
+    gl.attachShader(prg, vxShader);
+    gl.attachShader(prg, fgShader);
+    gl.linkProgram(prg);
+
+    if (!gl.getProgramParameter(prg, gl.LINK_STATUS)) {
+        alert('Could not initialise shaders');
+    }
+
+    gl.useProgram(prg);
+
+    prg.vertexPositionAttribute = gl.getAttribLocation(prg, 'aVertexPosition');
+    prg.pMatrixUniform = gl.getUniformLocation(prg, 'uPMatrix');
+    prg.mvMatrixUniform = gl.getUniformLocation(prg, 'uMVMatrix');
+    prg.modelColor = gl.getUniformLocation(prg, 'modelColor');
+}		
+
+
+
+function loadModel(filename){
+    var request = new XMLHttpRequest();
+    var resource = "http://"+document.domain+ filename
+    request.open("GET",filename);
+    request.onreadystatechange = function() {
+        console.info(request.readyState +' - '+request.status); 
+      if (request.readyState == 4) {
+	    if(request.status == 200) { //si carga el .json en el servidor
+			handleLoadedModel(filename,JSON.parse(request.responseText));
+		 }
+		else if (document.domain.length == 0 && request.status == 0){ //si carga el .json en local
+            handleLoadedModel(filename,JSON.parse(request.responseText));
+        }
+        else{
+            alert ('Ha habido un problema cargando el fichero :' + filename);
+            alert ('HTML codigo de error: ' + request.status);
+		}
+	  }
+    }
+    request.send();
+}
+
+/**Creamos los buffers que contiene la geometria del modelo
+* 
+*/
+function handleLoadedModel(filename,payload) {
+    
+    model = payload; //    guarda nuestro modelo en una variable global que la devuelve en drawScene
+
+    alert(filename + ' ha sido cargado del servidor');
+
+    modelVertexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, modelVertexBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.vertices), gl.STATIC_DRAW);
+    
+    
+    modelIndexBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, modelIndexBuffer);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(model.indices), gl.STATIC_DRAW);
+    
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+    gl.bindBuffer(gl.ARRAY_BUFFER,null);
+    
+    gl.uniform3f(prg.modelColor,model.color[0], model.color[1],model.color[2]);
+    
+    modelLoaded = true;
+}
+
+/**
+* dibuja la escena
+*/
+function drawScene(){
+
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.enable(gl.DEPTH_TEST);
+
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.viewport(0,0,c_width, c_height);
+
+    mat4.perspective(45, c_width / c_height, 0.1, 10000.0, pMatrix);
+    mat4.identity(mvMatrix);	
+    mat4.translate(mvMatrix, [0.0, -2.0, -2.0]);
+
+    gl.uniformMatrix4fv(prg.pMatrixUniform, false, pMatrix);
+    gl.uniformMatrix4fv(prg.mvMatrixUniform, false, mvMatrix);
+    
+    gl.enableVertexAttribArray(prg.vertexPositionAttribute);
+
+    if (!modelLoaded) return;
+    
+    gl.bindBuffer(gl.ARRAY_BUFFER, modelVertexBuffer);
+    gl.vertexAttribPointer(prg.aVertexPosition, 3, gl.FLOAT, false, 0, 0);
+    
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, modelIndexBuffer);
+    gl.drawElements(gl.TRIANGLES, model.indices.length, gl.UNSIGNED_SHORT,0);
+	
+	console.log('prueba');
+}	
+
+/**
+* Render bucle
+*/
+function renderLoop() {
+    requestAnimFrame(renderLoop);
+    drawScene();
+}
+
+/**
+*    ejecuta la app webgl
+*  se invoca desde el onload event del html
+*/
+function ejecutarWebGL(){
+    //    Variable del conntexto webgl
+    gl = utils.getGLContext('canvas-element-id');
+    //Inicializa el programa (shaders)
+    initProgram();
+    //carga el modelo del servidor usando AJAX + JSON
+    loadModel('models/cone2.json');
+    //Renderiza la escena
+    renderLoop();
+}
+</script>
+</head>
+
+
+<body onLoad='ejecutarWebGL()'>
+
+
+
+        <canvas id='canvas-element-id' width='480' height='400'>
+			Tu navegador no soporta el elemento canvas de HTML5
+        </canvas>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<title>Pagina principal</title>
+	
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="/js/controladores/controlador_ListadoRutas.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosRuta.js"></script>
+    <script type="text/javascript" src="js/mapas/mapa_MisRutas.js"></script>
+	<script src="js/index.js"></script>
+	
+	
+	<style>
+	  .thumb {
+		height: 400px;
+		border: 1px solid #000;
+		margin: 10px 5px 0 0;
+	  }
+	</style>
+	
+	
+</head>
+
+<body class="headerFijo footerFijo" ng-controller="DatosUsuario">
+	
+	<div ng-if="usuario != null">
+	
+		<ng-include src="'plantillas/header.html'"></ng-include>
+
+	<main ng-controller="DatosRuta">
+
+       <div class="container paddingContainer">
+            <div class="card col-md-12">
+                <ul class="nav nav-tabs">
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="misRutas.html">Mis Rutas</a></li>
+                    <li class="perfilPremium active"><a href="gestionarRutas.html">Gestionar Rutas</a></li>
+                    <li class="perfilPremium"><a href="crearRuta.html">Crear Rutas</a></li>
+                    <li class="perfilPremium"><a href="gestionarPagos.html">Gestionar Pagos</a></li>
+                </ul>
+
+                <div class="tab-content paddingTabs">
+                
+					<!----------------- CREAR RUTA ---------------->
+
+				<div class="row">
+
+					<h3> Introduzca una foto para vincularla a la ruta </h3>
+					
+					<div id="list"></div>
+					
+					<div class="top-margin-20" style="margin-left: 20px;">
+					
+							<form method="POST" action="/fotosRuta/subirFotosRuta" enctype="multipart/form-data">
+								<div class="row">
+								
+									<input type="hidden" name="_id" value="{{_id}}">
+									
+									<div>
+										<input type="file" name="foto" id="inputFotoPerfil" accept="image/*" file-model="foto">
+									</div>
+									
+								</div>
+								
+								 <div class="modal-footer">
+									<a href="gestionarRutas.html" class="btn btn-default">Volver </a>
+									<input type="submit" class="btn btn-primary" value="Enviar Fotos">
+								 </div>
+							</form>		
+					
+					</div>
+				</div>
+				
+				<!------------------------------------------------------------------>
+	
+						
+				
+				</div>
+			</div> 
+		</div>
+              
+
+		<div class="container-fluid pie">
+			
+		</div>
+		
+	</main>
+	
+	<ng-include src="'plantillas/footerFijo.html'"></ng-include>
+	
+	<!-- fin div zona correcta -->
+	</div>	
+	
+	<div ng-if="usuario == null">
+		<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+	</div>
+	
+</body>
+</html>

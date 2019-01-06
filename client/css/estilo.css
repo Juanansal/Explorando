@@ -1,0 +1,1200 @@
+
+/*********************** GENERALES ***************************************/
+html, body
+{
+    margin: 0;
+    padding: 0;
+	height: 100%;
+	background: #EDECEC;
+	font-family: 'verdana';
+   
+}
+
+.headerFijo
+{
+	padding-top: 50px;
+}
+
+.footerFijo
+{ 
+	padding-bottom: 38px;
+} 
+
+.active:hover
+{
+	cursor: pointer;
+}
+
+ #bodyp { padding-top: 50px; } 
+ 
+ .margin-0 { margin: 0px; }
+ .top-margin-0 { margin-top: 0px; } 
+ .top-margin-1 { margin-top: 1px; }
+ .top-margin-2 { margin-top: 2px; }
+ .top-margin-3 { margin-top: 3px; }
+ .top-margin-4 { margin-top: 4px; }
+ .top-margin-5 { margin-top: 5px; }
+ .top-margin-6 { margin-top: 6px; } 
+ .top-margin-7 { margin-top: 7px; }  
+ .top-margin-8 { margin-top: 8px; }
+ .top-margin-9 { margin-top: 9px; } 
+ .top-margin-10 { margin-top: 10px; } 
+ .top-margin-11 { margin-top: 11px; } 
+ .top-margin-12 { margin-top: 12px; } 
+ .top-margin-13 { margin-top: 13px; } 
+ .top-margin-14 { margin-top: 14px; }
+ .top-margin-15 { margin-top: 15px; } 
+ .top-margin-16 { margin-top: 16px; } 
+ .top-margin-17 { margin-top: 17px; } 
+ .top-margin-18 { margin-top: 18px; } 
+ .top-margin-19 { margin-top: 19px; } 
+ .top-margin-20 { margin-top: 20px; } 
+ .top-margin-25 { margin-top: 25px; } 
+ .top-margin-30 { margin-top: 30px; } 
+ .top-margin-35 { margin-top: 35px; } 
+ .top-margin-40 { margin-top: 40px; } 
+ .top-margin-45 { margin-top: 45px; } 
+ .top-margin-50 { margin-top: 50px; } 
+ 
+ .font-size-18 { font-size: 18px; }
+ .font-size-36 { font-size: 36px; }
+ 
+ 
+ .cursor:hover
+ {
+	cursor: pointer;
+}
+
+/****************** PIE ********************/
+footer
+{
+    padding: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+ 
+}	
+
+#copyright{
+    color: white;
+    font-size: 12px;
+    margin-top: 5px;
+    float: left;
+    font-weight: bold;
+}
+
+#redessociales{
+    color: #666;
+    font-size: 20px;
+    float: right;
+    
+}
+
+#redessociales > i{
+   margin-right: 5px; 
+}
+ 
+/******************  CABECERA ***************/
+
+.cabecera
+{
+	 height: 50px;
+	 border-bottom: 2px solid black;s
+}
+ 
+.imagenMenu{
+    position: fixed;
+    right: 30px;
+    z-index: 10;
+    height: 50px;
+}
+
+.menuHome{
+    top: 5%;
+}
+.menuInfo{
+    top: 45%;
+}
+.menuMap{
+    top: 90%;
+}
+ 
+ 
+ /**************************** ESTILOS DE LA PAGINA DE RUTA ***********************/
+.controlRuta{
+    
+    
+}
+
+.containerSliderRuta{
+    
+    padding: 0;
+    margin: 0;
+}
+
+.containerSliderRuta > div{
+    
+    padding: 0;
+    margin: 0;
+}
+
+.containerSliderRuta > div > div{
+    
+    padding: 0;
+    margin: 0;
+}
+
+
+.containerFotosRuta {
+    
+    
+    height: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.containerFotosRuta > .carousel-control{
+    
+width: 40px;
+
+top: 40%;
+font-size: 60px;
+font-weight: 100;
+line-height: 30px;
+
+text-align: center;
+
+    background: none;
+
+}
+
+.containerFotosRuta > .carousel-control.left{
+    
+    margin-left: -40px; 
+}
+
+.containerFotosRuta > .carousel-control.right{
+    
+    margin-right: -40px; 
+}
+
+.rowGallery > div{
+    position: relative;
+   
+    padding: 0;
+
+    height: 180px;
+}
+
+.rowGallery > div > a > img{
+    position: relative;
+    height: 170px;
+    object-fit: none;
+      
+}
+
+
+
+
+#ruta h4 
+{
+	margin-top: 0px;
+}
+ 
+ 
+/************************** ESTILOS DE LA PAGINA INDEX *****************************/
+
+#cuadrosinfoindex
+{
+	
+        background: url(../imagenes/vectorial-map.jpg) no-repeat center center fixed;
+    background-attachment: fixed;
+
+     -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    background-repeat: no-repeat;
+    
+    
+}
+
+#cuadroMapaIndex{
+    height: 100%;
+}
+
+#cuadroMapaIndex > div{
+    height: 100%;
+}
+
+#cuadroMapaIndex > div > div{
+    height: 100%;
+}
+
+#cuadroMapaIndex > div > div > div{
+    height: 100%;
+}
+
+#colorExploracion{
+    color:orange;
+}
+
+/*Texto animado del landing*/
+.contentAnimacion{
+
+    
+margin: auto;
+  font-size: 35px;
+  line-height: 40px;
+ 
+
+    width: 100%;
+
+
+  overflow: hidden;
+}
+
+.contentVisible{
+    font-weight: 600;
+  overflow: hidden;
+  height: 40px;
+  padding: 0 40px;
+}
+
+
+
+.contentVisible > p {
+  display:inline;
+  float:left;
+ 
+  margin:0;
+}
+
+.contentVisible > ul {
+
+  margin-top:0;
+    padding-left: 700px;
+  text-align:left;
+  list-style:none;
+  animation:6s linear 0s normal none infinite change;
+}
+
+.contentVisible > ul li {
+  line-height:40px;
+  margin:0;
+  color: orange;
+}
+
+@keyframes opacity {
+  0%, 100%   {opacity:0;}
+  50%  {opacity:1;}
+}
+
+@keyframes change {
+  0%, 12%, 100%   {transform:translateY(0);}
+  17%,29%  {transform:translateY(-25%);}
+  34%,46%  {transform:translateY(-50%);}
+  51%,63%  {transform:translateY(-75%);}
+  68%,80%  {transform:translateY(-50%);}
+  85%,97%  {transform:translateY(-25%);}
+}
+/**********
+animacion landing END
+******/
+
+#cuadrosinfoindex .container{
+    height: 100%;
+    /*position: fixed;*/
+}
+
+#listaAnimacion{
+    text-align: left;
+    list-style:none;
+    animation:6s linear 0s normal none infinite change;
+}
+
+#listaAnimacion li{
+    margin: 0;
+}
+
+
+.iconoSize
+{
+    width: 70%;
+    margin: auto;
+    margin-bottom: -30%;
+}
+
+@media (max-width: 459px){
+
+    .contentVisible{
+         display: none;
+    }
+    
+    .divIconos{     
+        padding-top: 0px;
+    }
+    
+    .divIconos > div > h2{     
+        font-size: 15px;
+    }
+    
+    .divIconos > div > p{     
+        font-size: 10px;
+    }
+    
+    .iconoSize{
+        width: 20%;
+          margin-bottom: 0%;
+    }
+    
+    .iconosIndex{
+        height: 20px !important;
+          
+    }
+    
+    #descripcionLogin > p {
+        
+        font-size: 14px;
+    }
+    
+        #cuadrosinfoindex{
+        height: 100%;
+            padding-top: 20px;
+    }
+}
+
+@media (min-width: 460px) and (max-width: 767px){
+
+    .contentVisible{
+         display: none;
+    }
+    
+    .divIconos{     
+        padding-top: 0px;
+    }
+    
+    .divIconos > div > h2{     
+        font-size: 15px;
+    }
+    
+    .divIconos > div > p{     
+        font-size: 10px;
+    }
+    
+    .iconoSize{
+        width: 15%;
+          margin-bottom: 0%;
+    }
+    
+    .iconosIndex{
+        height: 20px !important;
+          
+    }
+    
+    #descripcionLogin > p {
+        
+        font-size: 14px;
+    }
+    
+        #cuadrosinfoindex{
+        height: 100%;
+            padding-top: 20px;
+    }
+    
+
+    
+
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+
+    .divIconos
+    {
+       
+        padding-top: 50px;
+
+    }
+    
+    .iconosIndex{
+        height: 25px !important;
+    }
+    
+    
+    
+    .contentVisible > ul {
+
+        padding-left: 500px;
+    }
+
+    .contentVisible{
+        margin: auto;
+        font-size: 25px;
+        width: 770px;
+    }
+    
+    .container{
+      
+        margin: auto;
+    }
+    
+    #cuadrosinfoindex{
+        height: 100%;
+        margin: auto;
+        padding-top: 9%;
+    }
+    
+    #cuadrosinfoindex > .cuadroIndex{
+        position: relative;
+        top: 60%;
+        transform: translateY(-50%);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+    .container{
+       width:  700px;
+    }
+    
+
+    
+    .divIconos
+    {
+     
+        padding-top: 70px;
+
+    }
+    
+        #cuadrosinfoindex{
+        height: 100%;
+        margin: auto;
+        padding-top: 9%;
+    }
+    
+    #cuadrosinfoindex > .cuadroIndex{
+        position: relative;
+        
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+
+}
+
+@media (min-width: 1200px){
+
+    .divIconos
+    {
+      
+        padding-top: 70px;
+
+    }
+    
+        #cuadrosinfoindex{
+            position: relative;
+        height: 100%;
+        margin: auto;
+            padding-top: 9%;
+       
+  
+    }
+    
+    .contentVisible{
+        width: 980px;
+        margin: auto;
+    }
+
+
+    
+}
+
+
+/*******************************  PAGINA INDEX  *******************************/
+
+
+
+.carousel-fade .carousel-inner .item {
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  opacity: 0;
+}
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+html,
+body,
+.carousel,
+.carousel-inner,
+.carousel-inner .item {
+  height: 100%;
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.formularioIndex1{
+    z-index: 1;
+
+}
+
+.formularioIndex2{
+    z-index: 2;
+
+}
+
+#registrateTitulo{
+    color: white;
+    padding: 0px 30px 0px 30px;
+    margin-bottom: -10px;
+}
+
+#descripcionLogin{
+    position: absolute;
+    
+    /* background-color:rgba(0, 0, 0, 0.7); */
+    border-radius: 4px;
+    
+    padding: 10px;
+
+    color:white;
+    z-index: 1000;
+    max-width: 50%;
+    top: 50%;
+    left: 25%;
+    font-size: 20px;
+    margin-left: 20px;
+    
+    transform: translate(-50%,-50%);
+}
+
+.botonesLogin{
+    border-radius: 0px;
+    background-color: #337AB7;
+    border: white;
+    color: white;
+    font-weight: bold;
+}
+
+.botonesLogin:hover{
+    background-color: #2A6596;
+    color: white;
+}
+
+.formularioLogin{
+    
+    position: absolute;
+    
+    background-color:rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    
+    max-width: 500px;
+
+    margin: auto;
+    
+    /*Desplazamos un 50% el lado izquierdo y bajo de la figura*/
+    left: 75%;
+    top: 50%;
+    
+    /*Desplazamos un 50% de la figura para centrar*/
+    transform: translate(-50%,-50%);
+}
+
+.logo-login{
+    padding: 10px 10px 0 10px;
+    margin-top: 10px;
+}
+
+.facebook-login{
+    padding: 30px 30px 0 30px;
+    margin-bottom: -20px;
+}
+
+.facebook-login .btn{
+    border-radius: 0px;
+    background-color: #527BBD;
+}
+
+.facebook-login a{
+    font-weight:bold;
+    padding:8px;
+}
+
+.twitter-login{
+    padding: 30px 30px 0 30px;
+    margin-bottom: -20px;
+}
+
+.twitter-login .btn{
+    border-radius: 0px;
+    background-color: #36B9FF;
+}
+
+.twitter-login a{
+    font-weight:bold;
+    padding:8px;
+}
+
+.mainForm{
+    padding: 30px;
+}
+
+.formularioLogin .form-control{
+    margin-bottom: 10px;
+    border-radius: 0px;
+    color: white;
+    background: transparent;
+}
+
+.login-footer{
+    margin-top: 10px;
+}
+
+.opciones-login a{
+    color: white;
+}
+
+#textoLogin{
+    color: white;
+    text-align: center;
+    font-size: 15px;
+}
+
+.iconosIndex{
+    height: 50px;
+    
+}
+
+
+/*************************  MAPA  **********************************************/
+
+.map-min
+{
+	height: 400px;
+}
+
+.map_principal
+{
+	position: relative;
+	height: 100%;
+	min-height: 500px;
+}
+
+.map_ruta
+{
+	height: 500px;
+}
+
+.map_crear_ruta
+{
+	height: 700px;
+}
+
+.map_mis_rutas
+{
+	height: 700px;
+}
+
+.botonMapa
+{
+	border: 1px solid black;
+	padding: 6px;
+	margin: 5px;
+	margin-top: 0px;
+	font-size: 12px;
+	
+}
+
+/*******************  CUADRO INFO  *********************************************************/
+
+#cuadroinfo
+{
+    padding-left: 0px; 
+	padding-right: 0px;
+	border-radius: 0px;
+}
+
+.cuadro-info-min
+{
+	height: 400px;
+	overflow: scroll;
+}
+
+.cuadro-info-min-opc
+{
+	height: 120px;
+	border-bottom: 1px solid black;
+	margin-top: 0px;
+	margin:0px;
+	padding: 0px;
+}
+
+.lista-info-principal
+{
+	height: 100%;
+	overflow: scroll;
+	border-left: 2px solid black;
+	
+}
+
+.lista-info-opc
+{
+	height: 120px;
+	border-bottom: 1px solid black;
+	margin-top: 0px;
+	margin:0px;
+	padding: 0px;
+}
+
+.lista-info .list-group-item:first-child {
+   border-top-right-radius: 0px !important;
+   border-top-left-radius: 0px !important;
+}
+
+.lista-info .list-group-item:last-child {
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
+
+.boton-lista-info
+{
+	font-size: 20px;
+	text-align: center;
+	margin-top: 8px;
+}
+
+.boton-lista-info:hover
+{
+	text-decoration: none
+}
+
+.boton-lista-info-activo
+{
+	color: white;
+}
+
+.boton-lista-info-activo:hover
+{
+	color: #333;
+}
+
+.lista-info-cabecera
+{
+	height: 50px;
+	font-size: 12px;
+	background-color: white;
+	font-weight: bold;
+	padding: 0px;
+	padding-top: 5px;
+	border-bottom: 3px solid #ddd;
+}
+
+.lista-info-cabecera p
+{
+	margin-bottom: 0px;
+}
+
+.lista-info-cabecera:hover
+{
+	cursor: pointer;
+	background-color: #DDF;
+}
+
+/**************** CUADRO INFO MAPA OPCIONES ****************/
+
+.opcionMapa:hover
+{
+	cursor: pointer;
+	background-color: #EEF;
+}
+
+
+
+/************************** CLASES PARA TAMAÑO DE IMAGENES************************/
+
+
+/*********************** ESTILO DE LA PAGINA REGISTRO ***************************************/
+.margenTop{
+    
+    padding-top: 20px;
+}
+
+#botonRegistro{
+    margin-top: 20px;
+}
+
+/************************** MODIFICAR PERFIL *************************************************/
+.thumb{
+    
+    width: 100px;
+   
+}
+
+
+
+
+/*********************** ESTILO DE LA PAGINA PERFIL ***************************************/
+.paddingContainer{
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+.paddingTabs{
+    padding-top: 60px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#perfil
+{
+    color: grey;
+}
+
+#perfil > .row {
+    color: grey;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #DDD;
+}
+
+.TituloNegro{
+    color: black !important;
+}
+
+.botonBordeRecto{
+    border-radius: 0;
+}
+
+.opcionesPerfil{
+    bottom: 0;
+}
+
+.nav-tabs { border-bottom: 2px solid #DDD; font-weight: bold; }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+    .nav-tabs > li > a { border: none; color: #666; }
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+        .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; }
+
+.tab-content
+  {
+	  padding: 20px;
+	  padding-bottom: 40px;
+ }
+
+
+.card {
+    background: #FFF none repeat scroll 0% 0%; 
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); 
+    margin-bottom: 30px; 
+}
+
+.cardRuta {
+    background: #FFF none repeat scroll 0% 0%; 
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px; 
+    padding: 30px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	margin: 0px;
+	margin-bottom: 20px;
+}
+
+
+.perfilPremium{
+
+}
+
+#datosUsuario
+{
+	margin-left: 20px;
+}
+
+
+/************************************* DARSE DE ALTA PREMIUM **************************/
+.premiumCard1{
+    border: 5px solid #19BD9B;
+    border-radius: 0px;
+    
+}
+
+.premiumCard1 > .tituloPremium {
+    position: relative;
+    background-color:#19BD9B; 
+
+}
+
+.premiumCard1 > .precio1{
+    text-align: center;
+    background-color: #17A086;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+
+.premiumCard1 > .botonComprar{
+    background-color: #17A086;
+    border-color: #17A086;
+}
+
+.premiumCard2{
+    border: 5px solid #3598DC;
+    border-radius: 0px;
+}
+
+.premiumCard2 > .tituloPremium {
+    background-color:#3598DC; 
+}
+
+.premiumCard2 > .precio2{
+    text-align: center;
+    background-color: #2A80B9;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+
+.premiumCard2 > .botonComprar{
+    background-color: #2A80B9;
+    border-color: #2A80B9;
+}
+
+.premiumCard3{
+    border: 5px solid #34495E;
+    border-radius: 0px;
+}
+
+.premiumCard3 > .tituloPremium {
+    background-color:#34495E; 
+}
+
+.premiumCard3 > .precio3{
+    text-align: center;
+    background-color: #2D3E50;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+
+.premiumCard3 > .botonComprar{
+    background-color: #2D3E50;
+    border-color: #2D3E50;
+}
+
+
+.tituloPremium{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: white;
+    text-align: center;
+}
+
+.tituloPremium > h3 {
+    margin-top: 0px;
+   
+}
+
+.botonComprar{
+    
+    border-radius: 0px;
+}
+
+.estiloIframe{
+    
+    padding: 5px;
+}
+
+.labelCard{
+
+    width: 100%;
+}
+
+.opcionSuscripcion1, .opcionSuscripcion2, .opcionSuscripcion3{
+    visibility: hidden;
+}
+
+.opcionSuscripcion1:checked + label > .premiumCard1{
+    border: 5px solid orange;
+    transition-duration: 0.5s;
+}
+
+.opcionSuscripcion2:checked + label > .premiumCard2{
+    border: 5px solid orange;
+    transition-duration: 0.5s;
+}
+
+.opcionSuscripcion3:checked + label > .premiumCard3{
+    border: 5px solid orange;
+    transition-duration: 0.5s;
+}
+
+.tamanyoIframe{
+    margin: auto;
+    height: 100px;
+    width: 95%;
+    padding: 0;
+
+}
+
+.botonSuscribir{
+    margin: auto;
+}
+
+.aceptarCond{
+
+    text-align: right;
+    padding-right: 50px;
+}
+
+
+#avanzada{
+    
+}
+
+
+#experta{}
+
+
+/**************** PAGINA DE CREAR RUTA *************************/
+
+#formCrearRuta
+{
+	padding: 15px;
+}
+
+.labelCrearRuta
+{
+	font-size: 16px;
+}
+
+/* Esto esta en modificar Ruta y ruta.html */
+.fotosParaSubir {
+				height: 75px;
+				border: 1px solid #000;
+				margin: 10px 5px 0 0;
+			  }
+
+/***************** ESTILO SUBIR FOTO RUTA **********************/
+#contFotoSub{
+    padding-left: 30px;
+}
+
+
+/******************* RUTA **************************************/
+
+.hrRuta
+{
+	border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.estiloReservar{
+text-align:left;
+    
+}
+
+.estiloReservar > button {
+
+    margin-top: 10px;
+}
+
+.informacionRuta{
+    
+}
+
+.comentarioBloque{
+    background-color: #fff;
+    padding-top: 10px;
+}
+
+.usuarioComentarioBloque{
+    position: relative;
+    text-align: left;
+    margin-top: 10px;
+}
+
+
+    
+.imagenComent{
+    width: 30px;
+}
+
+.tituloComent{
+    font-size: 14px;
+}
+
+.tituloComent > .fechaC{
+    margin-top: -5px;
+}
+
+@media (min-width: 1200px){
+    
+    .tituloComent{
+        margin-left: -40px;
+    }    
+}
+
+/***************************************************************    
+GESTIONAR RUTAS
+*****************************************************************/
+.tituloGestionarRutas{
+    
+    font-weight: bold;
+}
+
+
+
+.disenyotabla > thead > tr > th{
+    
+    background-color: #4CAF50;
+    color: white;
+}
+
+.disenyotabla > thead > tr > td{
+    
+    vertical-align: middle; !important
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<title>Pagina principal</title>
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="/js/controladores/controlador_ListadoRutas.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+    <script type="text/javascript" src="js/mapas/mapa_Principal.js"></script>
+	<script src="js/index.js"></script>
+	
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7EBQlfMadq9avjFlnpyLN5JGC7oOIef4&callback=initMapPrincipal"> </script>
+	
+</head>
+
+<body class="headerFijo footerFijo" ng-controller="DatosUsuario" ng-init="iniciarTwitter()">
+
+		<div ng-if="usuario != null" style="height: 100%;">
+		<ng-include src="'plantillas/header.html'"></ng-include>
+		<main style="height: 100%;" ng-controller="ListadoRutas" ng-init="InitCargarRutas()">
+		
+			<div class="col-md-9 map_principal" id="map" style="height: 100%;">Mapa</div>		
+			
+			<div class="col-md-3 lista-info-principal" id="cuadroinfo">
+					
+					<div class="row" style="margin: 0px;">
+						<div class="col-md-6 text-center lista-info-cabecera" style="border-right: 2px solid #ddd;" ng-click="cargarRutasGeo(2)"> <p>Búsqueda</p> <p>por Localización</p> </div>
+						<div class="col-md-6 text-center lista-info-cabecera" style="border-left: 2px solid #ddd;" ng-click="cargarRutasGeo(1)"> <p>Búsqueda</p> <p>por Punto</p> </div>
+					</div>
+					
+					<div class="list-group lista-info" style="margin-bottom:0px;"> 
+
+						<div ng-class="activo[$index]" class="list-group-item opcionMapa" ng-repeat="item in rutas" ng-click="dibujarRuta(item._id, $index)"> 
+						
+							<div class="row">
+								<div class="col-xs-10">
+									<h4 class="list-group-item-heading">
+									<strong> {{item.titulo}} </strong>
+									</h4>
+								
+									<h5 class="list-group-item-heading" style="margin-bottom: 0px;">
+										{{item.inicio}} - {{item.llegada}}
+									</h5>
+								</div>
+								
+								<div class="col-xs-2">
+									<a ng-class="activoBoton[$index]" ng-href="ruta.html?id={{item._id}}" class="vcenter boton-lista-info glyphicon glyphicon-plus"></a>
+								</div>
+								
+							</div>
+						</div> 
+
+					</div>
+					</div>
+			
+			
+		
+
+		</main>
+		<ng-include src="'plantillas/footerFijo.html'"></ng-include>
+    
+		</div>
+	
+		<div ng-if="usuario == ''">
+			<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+		</div>
+    
+    
+</body>
+</html>

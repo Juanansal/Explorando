@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title> API </title>
+      <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	  <link rel="stylesheet" href="css/estilo.css">
+
+	  
+	  
+	  <style>
+	  
+		.apisi
+		{
+			background-color: #5CB85C;
+		}
+		.apino
+		{
+			background-color: #D9534F;
+		}
+		
+	  
+	  </style>
+	  
+       
+   </head>
+   
+ <body id="bodyp">
+	<div>
+		<div class="container">
+			
+			<div class="row">
+				<div>
+					<h2> API de Usuarios </h2>	
+
+					<table class="table table-bordered table-striped"> 
+						<colgroup> 
+							<col class="col-xs-1"> 
+							<col class="col-xs-4"> 
+							<col class="col-xs-7"> 
+						</colgroup> 
+						<thead> 
+							<tr> 
+								<th></th>
+								<th>Llamada</th> 
+								<th>Uso</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+						
+							<tr> 
+								<th class="apisi"></th>
+								<td>
+									<p><strong>GET /usuarios/listar</strong></p>
+									<hr>
+									<p> Devuelve todos los usuarios de la base de datos en un vector. </p>
+								</td> 
+								
+								<td>
+									<p> <strong> Parametros -></strong> XXX </p>
+									<p> <strong> Devuelve -></strong> Vector</p>
+									<hr>
+									<p> <strong>OK -></strong> Devuelve un vector con el listado de los usuarios</p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos</p>
+								</td> 
+							</tr> 
+						
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /usuarios/recuperar_usuario_por_id</strong></p>
+									<hr>
+									<p> Devuelve el usuario con la id pasada por parametro. </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> json con todos los datos del usuario</p>
+									<hr>
+									<p> <strong>OK -></strong> Devuelve un vector con el listado de los usuarios</p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos</p>
+								</td> 
+							</tr> 
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /usuarios/recuperar_usuario_por_usuario</strong></p>
+									<hr>
+									<p> Devuelve todos los datos de usuario con el nombre de usuario pasado por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario </p>
+									<p> <strong> Devuelve -></strong> json con todos los datos del usuario</p>
+									<hr>
+									<p> <strong>OK -></strong> Devuelve un vector con el listado de los usuarios</p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos</p>
+									<p> <strong>ERROR 2 -></strong> Usuario no encontrado</p>
+								</td> 
+							</tr>
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /usuarios/recuperar_nombre_por_usuario</strong></p>
+									<hr>
+									<p> Devuelve el nombre del usuario pasado por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario </p>
+									<p> <strong> Devuelve -></strong> nombre (String) </p>
+									<hr>
+									<p> <strong>OK -></strong> Devuelve el nombre del usuario pasado por parametro </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos</p>
+									<p> <strong>ERROR 2 -></strong> Usuario no encontrado</p>
+								</td> 
+							</tr>
+											
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /usuarios/comprobar_usuario</strong></p>
+									<hr>
+									<p> Busca el usuario pasado por parametro en la base de datos </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario </p>
+									<p> <strong> Devuelve -></strong> 0 (Usuario encontrado) ////// 1 (Usuario no encontrado)</p>
+									<hr>
+									<p> <strong>OK 0 -></strong> Usuario encontrado</p>
+									<p> <strong>OK 1 -></strong> Usuario no encontrado</p>
+									<p> <strong>ERROR 2 -></strong> Error al acceder a la base de datos</p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /usuarios/guardar</strong></p>
+									<hr>
+									<p> Guarda el usuario con los datos pasados por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario,pass,nombre,apellidos,email,telefono,ciudad,esguia,_id(opc) </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK) </p>
+									<hr>
+									<p> <strong>OK 0 -></strong> Usuario guardado correctamente</p>
+									<p> <strong>ERROR 1 -></strong> Error al guardar nuevo usuario</p>
+									<p> <strong>ERROR 2 -></strong> Error al buscar usuario por la _id</p>
+									<p> <strong>ERROR 3 -></strong> Error al modificar el usuario</p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /usuarios/eliminar</strong></p>
+									<hr>
+									<p> Elimina el usuario de la base de datos con el _id pasado por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK) </p>
+									<hr>
+									<p> <strong>OK 0 -></strong> Usuario guardado correctamente</p>
+									<p> <strong>ERROR 1 -></strong> Error al intentar eliminar el usuario</p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /usuarios/login</strong></p>
+									<hr>
+									<p> Comprueba el login, si devuelve un objeto con los datos del usuario es correcto </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario, pass </p>
+									<p> <strong> Devuelve -></strong> json con los datos del usuario logeado  </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un json con los datos del usuario</p>
+									<p> <strong>ERROR 1 -></strong> Error al conectar</p>
+									<p> <strong>ERROR 2 -></strong> Usuario no encontrado </p>
+									<p> <strong>ERROR 3 -></strong> Contraseña incorrecta</p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /usuarios/registroUsuario</strong></p>
+									<hr>
+									<p> Guarda el usuario con los datos pasados por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong>  usuario,pass,nombre,apellidos,email </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Usuario guardado correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al guardar nuevo usuario </p>
+								</td> 
+							</tr>
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /usuarios/registro_guia</strong></p>
+									<hr>
+									<p> Realiza el registro de un usuario a guia </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Usuario pasado a guia correctamente</p>
+									<p> <strong>ERROR 1 -></strong> Error al conectar</p>
+									<p> <strong>ERROR 2 -></strong> Usuario no encontrado </p>
+									<p> <strong>ERROR 3 -></strong> Error al guardar el usuario</p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /usuarios/modificar_pass</strong></p>
+									<hr>
+									<p> Cambia la contraseña pasado por parametro del usuario, ademas comprueba si son correctas </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario, pass1, pass2 </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Contraseña modificada correctamente</p>
+									<p> <strong>ERROR 1 -></strong> No se han recibido todos los parametros</p>
+									<p> <strong>ERROR 2 -></strong> Las contraseñas no coinciden </p>
+									<p> <strong>ERROR 3 -></strong> Error al buscar el usuario en la base de datos</p>
+									<p> <strong>ERROR 4 -></strong> Error al guardar el usuario</p>
+								</td> 
+							</tr>
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /usuarios/modificarPerfil</strong></p>
+									<hr>
+									<p> Guarda el usuario con los datos pasados por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario,pass,nombre,apellidos,email,telefono,ciudad,_id </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Usuario guardado correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al guardar nuevo usuario </p>
+									<p> <strong>ERROR 2 -></strong> Error al buscar usuario por la _id </p>
+									<p> <strong>ERROR 3 -></strong> Error al modificar el usuario </p>
+								</td> 
+							</tr>
+									
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /usuarios/subirFotoPerfil</strong></p>
+									<hr>
+									<p> Se realiza un foto de perfil de la foto subida desde el formnulario </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> file (Enviado mediante form/data) </p>
+									<p> <strong> Devuelve -></strong> Redirección a modificar_perfil.html  </p>
+									<hr>
+									<p> <strong> OK -></strong> Redirige a la web modificar perfil </p>
+									<p> <strong>ERROR 1 -></strong> Error al conectar con la base de datos </p>
+									<p> <strong>ERROR 2 -></strong> Error al subir la imagen </p>
+								</td> 
+							</tr>
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /usuarios/actualizarVotos</strong></p>
+									<hr>
+									<p> Actualiza la puntuacion del guia con el nuevo voto introducido en la ruta </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario, num </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK) </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Actualizacion realizada con exito </p>
+									<p> <strong>ERROR 1 -></strong> Parametros no recibidos </p>
+									<p> <strong>ERROR 2 -></strong> Error al realizar la peticion a la base de datos </p>
+									<p> <strong>ERROR 3 -></strong> Datos no encontrados </p>
+									<p> <strong>ERROR 4 -></strong> Error al guardar los nuevos datos </p>
+								</td> 
+							</tr>
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /usuarios/modificarSaldo</strong></p>
+									<hr>
+									<p> Añade o elimina saldo del guia </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario, num, modo (1-sumar, 2-restar) </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK) </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Actualizacion realizada con exito </p>
+									<p> <strong>ERROR 1 -></strong> Error al realizar la peticion a la base de datos </p>
+									<p> <strong>ERROR 2 -></strong> Datos no encontrados </p>
+									<p> <strong>ERROR 3 -></strong> Error al guardar los nuevos datos </p>
+								</td> 
+							</tr>
+									
+						</tbody> 
+					</table>
+				</div> 
+			</div>
+			
+			
+			
+			
+			<div class="row">
+				<div>
+					<h2> API de Rutas </h2>	
+
+					<table class="table table-bordered table-striped"> 
+						<colgroup> 
+							<col class="col-xs-1"> 
+							<col class="col-xs-4"> 
+							<col class="col-xs-7"> 
+						</colgroup> 
+						<thead> 
+							<tr> 
+								<th></th>
+								<th>Llamada</th> 
+								<th>Uso</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /rutas/listar</strong></p>
+									<hr>
+									<p> Devuelve todas las rutas de la base de datos en un vector </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> X </p>
+									<p> <strong> Devuelve -></strong> Vector  </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de las rutas</p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+								</td> 
+							</tr>	
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /rutas/listarRutasPorGuia</strong></p>
+									<hr>
+									<p> Devuelve todas las rutas de la base de datos en un vector del guia pasado por parametro.
+										Ademas segun la opcion si es: 
+										<br>
+										1- Devuelve solo las rutas siguiente a la fecha actual.
+										<br>
+										2- Devuelve solo las rutas anteriores a la fecha actual.
+									</p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> guia, opcion (1 o 2) </p>
+									<p> <strong> Devuelve -></strong> Vector </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de las rutas </p>
+									<p> <strong>ERROR 1 -></strong> Parametros no recibidos </p>
+									<p> <strong>ERROR 2 -></strong> Error al acceder a la base de datos (opcion==1) </p>
+									<p> <strong>ERROR 3 -></strong> Error al acceder a la base de datos (opcion==2) </p>
+								</td> 
+							</tr>					
+								
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /rutas/busquedaGeo</strong></p>
+									<hr>
+									<p> Devuelve las rutas mas cercanas al punto indicado a una distancia pasada por parametro (por defecto 5km) </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> coord, distancia(int) </p>
+									<p> <strong> Devuelve -></strong> Vector </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de las rutas </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+								</td> 
+							</tr>
+				
+							<tr> 													
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /rutas/recuperar_ruta_por_id</strong></p>
+									<hr>
+									<p> Devuelve todas las rutas de la base de datos en un vector. Si recibe una opcion: <br>
+										1- Devuelve solo las rutas siguiente a la fecha actual <br>
+						                2- Devuelve solo las rutas anteriores a la fecha actual
+									</p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id, opcion </p>
+									<p> <strong> Devuelve -></strong> json con todos los datos de la ruta </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un json con los datos de la ruta pasada por parametro </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos (sin opcion)</p>
+									<p> <strong>ERROR 2 -></strong> Error al acceder a la base de datos (opcion 2)</p>
+									<p> <strong>ERROR 3 -></strong> Error al acceder a la base de datos (opcion 1)</p>
+								</td> 
+							</tr>	
+								
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /rutas/guardar</strong></p>
+									<hr>
+									<p> Guarda la ruta con los datos pasados por parametro  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> titulo,descripcion,fecha,hora,duracion,inicio,llegada,capacidad,apuntados,guia,precio,_id(opc) </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Ruta guardada correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al guardar la nueva ruta </p>
+									<p> <strong>ERROR 2 -></strong> Error al buscar la ruta por la _id </p>
+									<p> <strong>ERROR 3 -></strong> Error al modificar la ruta </p>
+								</td> 
+							</tr>	
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /rutas/eliminar</strong></p>
+									<hr>
+									<p> Elimina la ruta de la base de datos con el _id pasado por parametro  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Ruta eliminada correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al intentar eliminar la ruta </p>
+								</td> 
+							</tr>
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /rutas/crearRuta</strong></p>
+									<hr>
+									<p> Guarda la ruta con los datos pasados por parametro  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> titulo, descripcion,fecha,hora,duracion,inicio,llegada,capacidad,apuntados,guia,precio </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Ruta guardada correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al guardar la nueva ruta </p>
+								</td> 
+							</tr>	
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /rutas/modificarRuta</strong></p>
+									<hr>
+									<p> Modifica la ruta con los parametros y el id pasados </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> titulo, descripcion,fecha,hora,duracion,inicio,llegada,capacidad,apuntados,guia,precio,_id </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Ruta guardada correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al guardar la ruta modificada </p>
+									<p> <strong>ERROR 2 -></strong> Error al realizar la petición a la base de datos </p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /rutas/actualizarApuntados</strong></p>
+									<hr>
+									<p> Modifica el numero de apuntados sumando o restando dependiendo de los parametros </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> opcion  (1- Sumar, 2- Restar), num, _id </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Apuntados actualizado correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Parametros no recibidos </p>
+									<p> <strong>ERROR 2 -></strong> Error al realizar la petición a la base de datos </p>
+									<p> <strong>ERROR 3 -></strong> Ruta llena </p>
+									<p> <strong>ERROR 4 -></strong> Error al insertar los nuevos datos en la bse de datos </p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /rutas/estaLlena</strong></p>
+									<hr>
+									<p> Comprueba si la ruta esta llena o no </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> 0 (No esta llena) o 1 (Esta llena) </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Ruta no llena </p>
+									<p> <strong> OK 1 -></strong> Ruta llena </p>
+									<p> <strong> ERROR 2 -></strong> Error al realizar la petición a la base de datos </p>
+
+								</td> 
+							</tr>
+							
+						</tbody> 
+					</table>
+				</div> 
+			</div>	
+
+		
+			<div class="row">
+				<div>
+					<h2> API de Comentarios </h2>	
+
+					<table class="table table-bordered table-striped"> 
+						<colgroup> 
+							<col class="col-xs-1"> 
+							<col class="col-xs-4"> 
+							<col class="col-xs-7"> 
+						</colgroup> 
+						<thead> 
+							<tr> 
+								<th></th>
+								<th>Llamada</th> 
+								<th>Uso</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /comentarios/listar</strong></p>
+									<hr>
+									<p> Devuelve todos las comentarios de la base de datos en un vector  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> X </p>
+									<p> <strong> Devuelve -></strong> Vector  </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de los comentarios</p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+								</td> 
+							</tr>	
+								
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /comentarios/recuperar_comentario_por_id</strong></p>
+									<hr>
+									<p> Devuelve el comentario con la id pasada por parametro  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> json con todos los datos del comentario </p>
+									<hr>
+									<p> <strong> OK -> </strong> Devuelve un json con los datos del comentario pasado por parametro </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /comentarios/guardar</strong></p>
+									<hr>
+									<p> Guarda el comentaro con los datos pasados por parametro  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuarioCom, nombreUsuarioCom, rutaCom, comentario, fecha, _id(opc) </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Comentario guardado correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al guardar el nuevo comentario </p>
+									<p> <strong>ERROR 2 -></strong> Error al buscar el comentario por la _id </p>
+									<p> <strong>ERROR 3 -></strong> Error al modificar el comentario </p>
+								</td> 
+							</tr>	
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /comentarios/eliminar</strong></p>
+									<hr>
+									<p> Elimina el comentario de la base de datos con el _id pasado por parametro  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Comentario eliminado correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al intentar eliminar el comentario </p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /comentarios/listarComentariosPorRuta</strong></p>
+									<hr>
+									<p> Devuelve todos los comentarios que coincida con la ruta pasada por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> rutaCom </p>
+									<p> <strong> Devuelve -></strong> Vector  </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de los comentarios </p>
+									<p> <strong>ERROR 1 -></strong> Parametro rutaCom no recibido </p>
+									<p> <strong>ERROR 2 -></strong> Error al acceder a la base de datos</p>									
+								</td> 
+							</tr>
+							
+						</tbody> 
+					</table>
+				</div> 
+			</div>
+			
+			
+			<div class="row">
+				<div>
+					<h2> API de Reservas </h2>	
+
+					<table class="table table-bordered table-striped"> 
+						<colgroup> 
+							<col class="col-xs-1"> 
+							<col class="col-xs-4"> 
+							<col class="col-xs-7"> 
+						</colgroup> 
+						<thead> 
+							<tr> 
+								<th></th>
+								<th>Llamada</th> 
+								<th>Uso</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /reservas/listar</strong></p>
+									<hr>
+									<p> Devuelve todas las reservas de la base de datos en un vector   </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> X </p>
+									<p> <strong> Devuelve -></strong> Vector  </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de las reservas</p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+								</td> 
+							</tr>	
+								
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /reservas/listarReservasPorUsuario</strong></p>
+									<hr>
+									<p> Devuelve todas las reservas de la base de datos en un vector del usuario pasado por parametro  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario </p>
+									<p> <strong> Devuelve -></strong> Vector </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de las reservas </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+									<p> <strong>ERROR 2 -></strong> Parametro no recibido </p>
+								</td> 
+							</tr>	
+								
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /reservas/listarReservasPorRuta</strong></p>
+									<hr>
+									<p> Devuelve todas las reservas de la base de datos en un vector de la ruta pasado por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> idRuta </p>
+									<p> <strong> Devuelve -></strong> Vector </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de las reservas </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+									<p> <strong>ERROR 2 -></strong> Parametro no recibido </p>
+								</td> 
+							</tr>																
+								
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /reservas/listarReservasPorGuia</strong></p>
+									<hr>
+									<p> Devuelve todas las reservas de la base de datos en un vector del guia pasado por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> guia </p>
+									<p> <strong> Devuelve -></strong> Vector </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de las reservas </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+									<p> <strong>ERROR 2 -></strong> Parametro no recibido </p>
+								</td> 
+							</tr>															
+								
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /reservas/recuperar_reserva_por_id</strong></p>
+									<hr>
+									<p> Devuelve la reserva con la id pasada por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> json con todos los datos de la reserva </p>
+									<hr>
+									<p> <strong> OK -> </strong> Devuelve un json con los datos de la reserva pasado por parametro </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /reservas/guardar</strong></p>
+									<hr>
+									<p> Guarda la reserva con los datos pasados por parametro  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> rutaRes, usuarioRes, fecha, puntuacion, _id(opc) </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Reserva guardada correctamente </p>
+									<p> <strong> ERROR 1 -></strong> Error al guardar la nueva reserva </p>
+									<p> <strong> ERROR 2 -></strong> Error al buscar la reserva por la _id </p>
+									<p> <strong> ERROR 3 -></strong> Error al modificar la reserva </p>
+								</td> 
+							</tr>	
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /reservas/eliminar</strong></p>
+									<hr>
+									<p> Elimina la reserva de la base de datos con el _id pasado por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Reserva eliminada correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al intentar eliminar la reserva </p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /reservas/crearReservaUsuario</strong></p>
+									<hr>
+									<p> Guarda la reserva con los datos pasados por parametro en la pagina de ruta, cuando un usuario solicita una ruta </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> rutaRes, usuarioRes </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Reserva guardada correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al guardar la nueva reserva </p>
+									<p> <strong>ERROR 2 -></strong> Parametros no recibidos </p>
+								</td> 
+							</tr>	
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /reservas/puedeReservar</strong></p>
+									<hr>
+									<p> Comprueba si el usuario puede realizar reservas de la ruta pasada por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> rutaRes, usuarioRes </p>
+									<p> <strong> Devuelve -></strong> 0 -> Si puede reservar, obj (_id) -> No puede reservar y devuelve un objeto con la _id  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Si puede reservar </p>
+									<p> <strong> OK object(_id) -></strong> No puede reservar y devuelve un object con la _id de la reserva </p>
+									<p> <strong>ERROR 1 -></strong> Parametros no recibidos </p>
+									<p> <strong>ERROR 2 -></strong> Error al realizar la busqueda en la base de datos </p>
+								</td> 
+							</tr>	
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /reservas/puedeVotar</strong></p>
+									<hr>
+									<p> Comprueba si el usuario puede realizar votos en la ruta </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> 0 -> Si puede votar, 1 No puede votar, 2 -> Ya ha votado </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Si puede votar </p>
+									<p> <strong> OK 1 -></strong> No puede votar </p>
+									<p> <strong> OK 2 -></strong> Ya ha votado </p>
+									<p> <strong>ERROR 3 -></strong> Parametro _id no recibido </p>
+									<p> <strong>ERROR 4 -></strong> Error al realizar la busqueda en la base de datos </p>
+								</td> 
+							</tr>	
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /reservas/actualizarVoto</strong></p>
+									<hr>
+									<p> Introduce en la base de datos el voto realizado por el usuario </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id, num </p>
+									<p> <strong> Devuelve -></strong> 0 OK </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Actualizacion del voto en la base de datos realiazado correctamente </p>
+									<p> <strong> ERROR 1 -></strong> Parametros no recibidos </p>
+									<p> <strong> ERROR 2 -></strong> Error al realizar la peticion a la base de datos </p>
+									<p> <strong>ERROR 3 -></strong> Reserva no encontrada </p>
+									<p> <strong>ERROR 4 -></strong> La reserva no se ha guardado correctamente al insertar los datos en la db </p>
+								</td> 
+							</tr>
+							
+							
+							
+						</tbody> 
+					</table>
+				</div> 
+			</div>
+			
+			
+			<div class="row">
+				<div>
+					<h2> API de FotosRuta </h2>	
+
+					<table class="table table-bordered table-striped"> 
+						<colgroup> 
+							<col class="col-xs-1"> 
+							<col class="col-xs-4"> 
+							<col class="col-xs-7"> 
+						</colgroup> 
+						<thead> 
+							<tr> 
+								<th></th>
+								<th>Llamada</th> 
+								<th>Uso</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /fotosRuta/listar</strong></p>
+									<hr>
+									<p> Devuelve todos las fotos de las rutas de la base de datos en un vector  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> X </p>
+									<p> <strong> Devuelve -></strong> Vector  </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con el listado de las fotos </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+								</td> 
+							</tr>	
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /fotosRuta/recuperar_fotoRuta_por_id</strong></p>
+									<hr>
+									<p> Devuelve la foto con la id pasada por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> json con todos los datos de la foto de ruta </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un json con los datos da la foto pasado por parametro </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+								</td> 
+							</tr>
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /fotosRuta/recuperarFotoRutaPorIdRuta</strong></p>
+									<hr>
+									<p> Devuelve las fotos con la id de ruta pasada por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> idRuta </p>
+									<p> <strong> Devuelve -></strong> un vector con datos json con los datos de las fotos de ruta </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un vector con los datos de las fotos perteneciente a la idRuta pasada por parametro</p>
+									<p> <strong>ERROR 1 -></strong> Parametros no recibidos </p>
+									<p> <strong>ERROR 2 -></strong> Error al acceder a la base de datos </p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /fotosRuta/guardar</strong></p>
+									<hr>
+									<p> Guarda el comentario con los datos pasados por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> url, idRuta, _id(opc) </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Foto de Ruta guardada correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al guardar la nueva foto de Ruta </p>
+									<p> <strong>ERROR 2 -></strong> Error al buscar el la foto por _id </p>
+									<p> <strong>ERROR 3 -></strong> Error al modificar los datos de la foto </p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /fotosRuta/eliminar</strong></p>
+									<hr>
+									<p> Elimina la foto de ruta de la base de datos con el _id pasado por parametro </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> _id </p>
+									<p> <strong> Devuelve -></strong> 0 (Todo OK)   </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Foto de ruta eliminado correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Error al intentar eliminar la foto de la ruta </p>
+								</td> 
+							</tr>
+
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>POST /fotosRuta/subirFotosRuta</strong></p>
+									<hr>
+									<p> Sube al servidor la foto pasada por el parametro file del formulario </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> file </p>
+									<p> <strong> Devuelve -></strong> redirección a gestionarRutas.html </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Redirige a gestionarRutas.html </p>
+									<p> <strong>ERROR 1 -></strong> Foto no guardada correctamente </p>
+								</td> 
+							</tr>				
+							
+							
+						</tbody> 
+					</table>
+				</div> 
+			</div>
+			
+			<div class="row">
+				<div>
+					<h2> API de Twitter </h2>	
+
+					<table class="table table-bordered table-striped"> 
+						<colgroup> 
+							<col class="col-xs-1"> 
+							<col class="col-xs-4"> 
+							<col class="col-xs-7"> 
+						</colgroup> 
+						<thead> 
+							<tr> 
+								<th></th>
+								<th>Llamada</th> 
+								<th>Uso</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /twitter/recogerDatos</strong></p>
+									<hr>
+									<p> Si el usuario esta logeado con twitter devuelve los datos de la sesion  </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> user </p>
+									<p> <strong> Devuelve -></strong> json con datos de la sesion  </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un json con los datos de la sesión </p>
+								</td> 
+							</tr>	
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /login/twitter</strong></p>
+									<hr>
+									<p> Se realiza el login con twitter. Se redirige a una web de twitter donde de realizara la autentificación.</p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> XXX </p>
+									<p> <strong> Devuelve -></strong> una redireccion dependiendo del estado del login  </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve una redirección </p>
+								</td> 
+							</tr>
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /twitter/twittearComentario</strong></p>
+									<hr>
+									<p> Se escribe un tweet en twitter con el contenido del comentario.</p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario, texto </p>
+									<p> <strong> Devuelve -></strong> 0 -> OK  </p>
+									<hr>
+									<p> <strong> OK 0 -></strong> Comentario enviado correctamente </p>
+									<p> <strong>ERROR 1 -></strong> Parametros no recibidos </p>
+									<p> <strong>ERROR 2 -></strong> Error al realizar la petición al servidor </p>
+									<p> <strong>ERROR 3 -></strong> Usuario no encontrado </p>
+									<p> <strong>ERROR 4 -></strong> Usuario no logeado con twitter </p>
+									<p> <strong>ERROR 5 -></strong> Error al intentar escribir el tweet </p>
+								</td> 
+							</tr>
+							
+							
+							
+						</tbody> 
+					</table>
+				</div> 
+			</div>
+			
+			<div class="row">
+				<div>
+					<h2> API de Paypal </h2>	
+
+					<table class="table table-bordered table-striped"> 
+						<colgroup> 
+							<col class="col-xs-1"> 
+							<col class="col-xs-4"> 
+							<col class="col-xs-7"> 
+						</colgroup> 
+						<thead> 
+							<tr> 
+								<th></th>
+								<th>Llamada</th> 
+								<th>Uso</th> 
+							</tr> 
+						</thead> 
+						<tbody> 
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /paypal/realizarPago</strong></p>
+									<hr>
+									<p> Envia la informacion para que paypal realice el pago </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario </p>
+									<p> <strong> Devuelve -></strong> json con los datos de la peticion paypal realizada </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un json con los datos de paypal </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+									<p> <strong>ERROR 2 -></strong> Error al intentar realizar el pago </p>
+								</td> 
+							</tr>					
+							
+							<tr> 
+								<th class="apisi"></th>								
+								<td>
+									<p><strong>GET /paypal/retirarSaldo</strong></p>
+									<hr>
+									<p> json con los datos de la peticion paypal realizada </p>
+								</td>
+								
+								<td>
+									<p> <strong> Parametros -></strong> usuario </p>
+									<p> <strong> Devuelve -></strong> json con los datos de la peticion paypal realizada </p>
+									<hr>
+									<p> <strong> OK -></strong> Devuelve un json con los datos de paypal </p>
+									<p> <strong>ERROR 1 -></strong> Error al acceder a la base de datos </p>
+									<p> <strong>ERROR 2 -></strong> Error al intentar retirar el pago </p>
+								</td> 
+							</tr>			
+							
+							
+						</tbody> 
+					</table>
+				</div> 
+			</div>
+			
+			
+			
+			
+			
+			
+			
+		</div>
+	</div>
+	
+	
+ <br><br>
+ 
+ </body>
+ 
+</html>

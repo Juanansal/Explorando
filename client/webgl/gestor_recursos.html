@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.getJSON demo</title>
+  <style>
+  img {
+    height: 100px;
+    float: left;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div id="images"></div>
+ 
+<script>
+(function() {
+var jqxhr = $.getJSON( "cone.json", function() {
+  console.log( "success" );
+})
+  .done(function() {
+    console.log( "second success" );
+  })
+  .fail(function() {
+    console.log( "error" );
+  })
+  .always(function() {
+    console.log( "complete" );
+  });
+ 
+// Perform other work here ...
+ 
+// Set another completion function for the request above
+jqxhr.complete(function() {
+  console.log( "second complete" );
+});
+})();
+</script>
+ 
+</body>
+</html>

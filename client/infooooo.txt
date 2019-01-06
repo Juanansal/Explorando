@@ -1,0 +1,49 @@
+QUE FALTA
+
+Destacado
+---------------------------
+
+- 020% Zona de administracion para usuarios admin
+- 100% Gestion de las fotos de perfil
+- 050% Gestion de las fotos de las rutas (Falta la subida y inserccion de datos en db)
+- 060% Imprimir en pdf el recibo de la rutas (Falta el diseño)
+- 100% Integrar twitter para poder realizar twits sobres las rutas solicitadas y comentarios de las rutas (Falta meter lo del twett de comentarios y el modificar perfil 4 tonterias)
+- 000% Estadisticas basicas con google charts en la pagina de estadisticas (Al final)
+- 000% Integrar pagos con paypal a la hora de subscribirse como guia
+- 000% Implementar mensajes a los guias sobre x rutas
+- 000% Añadir millones de filtros en principal.html con todos los datos posibles (Filtros por fecha, indicando final, inicio etc)
+- 100% Configuracion de el envio de correos  (Ya lo hare al final cuando no baneen) 
+
+
+
+Menor
+---------------------------
+
+- 000% En busqueda por punto poder pinchar sobre el punto dibujado
+- 000% Añadir una busqueda por texto en principal.html
+- 000% Poder personalizar el radio de distancia de las busquedas
+- 000% Css de modificar Perfil y modificar contraseña
+- 000% Mejorar ligeramente el css de ruta.html
+- 000% Añadir contenido al pie de pagina
+- 000% Solucionar el problema de los mapas al volver atras en las paginas
+- 000% Solucionar el problema puntual de cargar el camino de la ruta al entrar en ruta.html y modificarRuta.html
+- 100% Diseño de la pagina privada
+- 000% Diseño de la pgina de informacion del guia
+- 100% Funcionalidad de cuando se reserva reduzca la capacidad en la ruta y si capacidad=0 no se pueda reservar ruta y diga ruta completa o algo de eso.
+- 000% Centrar todos los mapas en Madrid si no hay geolocalizacion
+- 000% Cambiar imagenes en los iconos de la localizacion y personalizar un poco el dibujado de la ruta
+- 000% Diseño de la pagina de gestion de pagos para el guia
+- 000% Gestionar puntuacion de los usuarios en las rutas que se han apuntado y modificar los datos de la ruta para que sume y controle estaws puntuaciones
+- 000% A la hora de dibujar la ruta en crear y modificar ruta, al añadir un nuevo punto de control, no guarda las coordenadas de los puntos movidos
+- 000% Añadir una tabla y sus peticiones en la base de datos que controlen estadisticas generales que luego seras usadas en la pagina de administrador
+- 000% Opción para el guia para poder eliminar las rutas que el crea
+- 000% Validar formularios (todos)
+
+
+// Santi ves haciendo esto
+
+- Diseño del boton login de twitter en la pagina index.html
+- Diseño del boton twitear comentarios en las paginas de ruta.html
+- El cambio de foto lo hare en modificar perfil, mira si puedes meter el boton que hay en perfil de cambiar foto en modificar perfil
+- Diseño del slide de fotos en ruta.html, ponlo debajo del mapa que ocupe el 100% del ancho como el mapa
+- Diseño del input file, de subirFotoPerfil

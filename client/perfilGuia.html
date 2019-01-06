@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<title>Perfil</title>
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosGuia.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_ListadoRutas.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+		<script type="text/javascript" src="js/controladores/controlador_CrearRuta.js"></script>
+    <script type="text/javascript" src="js/mapas/mapa_CrearRuta.js"></script>
+	
+	
+</head>
+<body class="headerFijo footerFijo" ng-controller="DatosUsuario" ng-init="cargarUsuario()">
+
+	<div ng-if="usuario != null">
+
+	<ng-include src="'plantillas/header.html'"></ng-include>
+
+	<main>
+
+       <div class="container paddingContainer">
+            <div class="card  col-md-12">
+
+                <div class="tab-content paddingTabs">
+                
+					<!----------------- PERFIL ---------------->
+					
+						<div class="tab-pane fade in active" id="perfil" ng-controller="DatosGuia" ng-init="cargarGuia()">
+							<div class="row">
+								<div class="col-xs-12 col-sm-3 col-md-3">
+									<img class="img-responsive" src="{{urlFoto}}" alt="fotoPerfil">
+									<h3 class="top-margin-10 text-center">Valoración: {{media | number:1}} </h3>
+								</div>
+								<div class="col-xs-12 col-sm-9 col-md-9">
+									<div class="row" id="datosUsuario">
+										
+										
+										<hr class="top-margin-0">
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong> Usuario </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{usuario}}
+											</div>											
+											
+										</div>
+										
+										<hr>
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> <strong> Nombre </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{nombre}}
+											</div>											
+											
+										</div>
+										
+										<hr>
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> <strong> Apellidos </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{apellidos}}
+											</div>											
+											
+										</div>
+										
+										<hr>
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <strong> Email </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{email}}
+											</div>											
+											
+										</div>
+											
+										
+										<hr>																	
+								   </div>
+								</div>
+
+							</div>
+							<div class="top-margin-15" ng-controller="ListadoRutas" ng-init="rutasDelGuiaPublico(1,guia)">
+								
+								<div class="row">
+								  <div class="col-md-10 col-md-offset-1"> 
+								
+									<div class="panel panel-default">
+									  <div class="panel-heading tituloGestionarRutas">Rutas registradas</div>
+									  
+									  <table class="table table-striped disenyotabla">
+										<thead>
+											<tr>
+												<th> Nombre </th>
+												<th> Inicio </th>
+												<th> Llegada </th>
+												<th> Fecha </th>
+												<th></th>
+											</tr>
+										</thead>
+										
+										<tbody>
+											<tr ng-repeat="item in rutas">
+												<td> {{item.titulo}}</td>
+												<td> {{item.inicio}}</td>
+												<td> {{item.llegada}}</td>
+												<td>{{item.fecha | date: "dd-MM-yyyy"}}</td>
+												<td><a ng-href="ruta.html?id={{item._id}}">Acceder</a></td>
+											</tr>
+										</tbody>
+									  </table>
+									</div>
+								
+								
+								
+								
+								  </div>
+								</div>
+								
+								
+							</div>						
+						</div>
+				
+				</div>
+			</div> 
+		</div>       
+        
+		</main>
+		<ng-include src="'plantillas/footerFijo.html'"></ng-include>
+	
+	</div>
+	
+	<div ng-if="usuario == null">
+		<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+	</div>
+	
+</body>
+</html>

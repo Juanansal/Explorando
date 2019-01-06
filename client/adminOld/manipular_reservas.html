@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+   <head>
+      <meta charset="utf-8" />
+      <title> Reservas </title>
+      <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+      <script type="text/javascript" src="../angularjs/angular.js"></script>
+      <script type="text/javascript" src="../js/init.js"></script>
+	  <script type="text/javascript" src="../js/controladores/controlador_AdminReservas.js"></script>
+	  
+       
+   </head>
+   <body>
+        <div class="container" ng-controller="AdminReservas" ng-init="cargarReservas()">
+            <h1> Administrar Reservas </h1>
+            <form action="javascript:void(0);">
+                <div class="row">
+                    <div class="span4">
+                        <label> Usuario </label>
+                        <input type="text" ng-model="usuarioRes" />
+                    </div>
+					
+                    <div class="span4">                    
+                        <label> Ruta id </label>
+                        <input type="text" ng-model="rutaRes" />
+                    </div>
+					
+                    <div class="span4">
+                        <label> puntuacion </label>
+                        <input type="text" ng-model="puntuacion" />
+                    </div>
+					
+                </div>
+                <div class="row">
+                    <div class="span4">
+                        <input type="submit" value="Guardar" class="btn btn-success" ng-click="guardarReserva()" />
+                        <input type="button" value="Limpiar" class="btn btn-danger" ng-click="limpiarDatos()" />
+                    </div>
+                </div>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> Usuario </th>
+                        <th> Id Ruta </th>
+                        <th> Fecha </th>
+                        <th> Puntuacion </th>
+                        <th>  </th>
+                        <th>  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in reservas">
+                        <td> {{item.usuarioRes}} </td>
+                        <td> {{item.rutaRes}} </td>
+                        <td> {{item.fecha}} </td>
+                        <td> {{item.puntuacion}} </td>
+						
+                        <td> <a href="javascript:void(0);" class="btn btn-info" ng-click="recuperarReserva(item._id)"> Editar </a> </td>
+                        <td> <a href="javascript:void(0);" class="btn btn-danger" ng-click="eliminarReserva(item._id)"> Eliminar </a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

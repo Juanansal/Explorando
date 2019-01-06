@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<title>Pagina principal</title>
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_RegistroGuia.js"></script>
+    <script type="text/javascript" src="js/mapas.js"></script>
+	
+</head>
+
+<body id="bodyp" ng-controller="DatosUsuario" ng-init="cargarUsuario()">
+	
+	<div ng-if="usuario != ''">
+		<ng-include src="'plantillas/header.html'"></ng-include>
+	
+		<main ng-controller="RegistroGuia">
+			
+			 <button type="button" class="btn btn-primary" ng-click="registrarGuia()">Registro de guia</button> 
+			 
+			 {{resultadoRegistroGuia}}
+			
+		</main>
+		
+	</div>
+	
+	
+	<div ng-if="usuario == ''">
+		<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+	</div>
+     
+    
+    
+    
+    
+    
+</body>
+</html>

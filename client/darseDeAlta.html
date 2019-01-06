@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<title>Perfil</title>
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_RegistroGuia.js"></script>
+    <script type="text/javascript" src="js/mapas.js"></script>
+	
+</head>
+<body class="headerFijo" ng-controller="DatosUsuario">
+
+	<ng-include src="'plantillas/header.html'"></ng-include>
+
+	<main ng-controller="RegistroGuia">
+
+        <div class="container paddingContainer card top-margin-20">
+            
+            <h3>¿Quieres ser guía?</h3>
+            
+            <div class="col-sm-4">
+                <div class="beneficioTitulo">
+                    <h3>Crea tus rutas</h3>
+                </div>
+                <div class="beneficioContenido">
+                    <p>Crea tus propias rutas y compártelas con el resto del mundo. Sácale el máximo partido a tu afán por explorar, conoce gente nueva y recibe tu recompensa económica como guía profesional.</p>
+                </div>
+            </div>
+            
+            <div class="col-sm-4">
+                <div class="beneficioTitulo">
+                    <h3>Mejora tu curriculum</h3>
+                </div>
+                <div class="beneficioContenido">
+                    <p>Haz crecer tu curriculum como guía profesional, y mejora tu forma de ser guía analizando las valoraciones de lo usuarios. También podrás hacer uso de nuestro MOOC</p>
+                </div>
+            </div>
+            
+            <div class="col-sm-4">
+                <div class="beneficioTitulo">
+                    <h3>Explora</h3>
+                </div>
+                <div class="beneficioContenido">
+                    <p>Adéntrate en un mundo nuevo, con nuestro servicio podrás conocer sitios nuevos y enseñárselo a tus clientes. Sácale el máximo partido a nuestros servicios.</p>
+                </div>
+            </div>
+            
+            <h3>Terminos y condiciones de uso</h3>
+           
+            <div class="embed-responsive embed-responsive-16by9 tamanyoIframe">
+                <iframe class="embed-responsive-item estiloIframe" src="condiciones.html"></iframe>
+                
+            </div>
+            
+            <div class="aceptarCond"><input id="aceptarCondiciones" type="checkbox"><label for="aceptarCondiciones">Acepto las condiciones</label></div>
+            
+
+            
+            <h3>Planes de suscripción</h3>
+            
+            <form>
+                
+                <div class="col-sm-4">
+                    <input class="opcionSuscripcion1" id="basica" type="radio" name="suscripcion" value="basica">
+                    <label class="labelCard" for="basica">
+                        <div class="premiumCard1">
+                            <div class="tituloPremium"><h4>Suscripción básica</h4></div>
+                            <div class="precio1"><h2>10€/mes</h2></div>	
+                        </div>
+                    </label>
+                </div>
+               
+                
+             
+                <div class="col-sm-4">
+                    <input class="opcionSuscripcion2" id="avanzada" type="radio" name="suscripcion" value="avanzada">
+                    <label class="labelCard" for="avanzada">
+                    <div class="premiumCard2">
+                        <div class="tituloPremium"><h4>Suscripción avanzada</h4></div>
+                        <div class="precio2"><h2>20€/3meses</h2></div>
+                    </div>
+                    </label>
+                </div>
+             
+
+                
+                <div class="col-sm-4">
+                    <input class="opcionSuscripcion3" id="experta" type="radio" name="suscripcion" value="experta">
+                        <label class="labelCard" for="experta">
+                        <div class="premiumCard3">
+                            <div class="tituloPremium"><h4>Suscripcion experta</h4></div>
+                            <div class="precio3"><h2>40€/6meses</h2></div>
+                        </div>
+                        </label>
+                </div>
+                
+                    
+            </form>
+            
+            <div class="col-sm-4">
+                <button type="button" class="botonSuscribir btn btn-large btn-success" ng-click="registrarGuia()">Dar de alta</button>		
+            </div>
+			<span class="top-margin-5"> {{resultadoRegistroGuia}} </span>
+        </div>
+        
+        
+        
+        </div> 
+        
+        
+        
+		<div class="container-fluid pie">
+			
+		</div>
+		
+	</main>
+	<ng-include src="'plantillas/footerFijo.html'"></ng-include>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

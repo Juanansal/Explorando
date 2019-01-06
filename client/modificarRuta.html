@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<title>Pagina principal</title>
+	
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="/js/controladores/controlador_ListadoRutas.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CrearRuta.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_ModificarRuta.js"></script>
+    <script type="text/javascript" src="js/mapas/mapa_CrearRuta.js"></script>
+	<script src="js/index.js"></script>
+	
+	<script type="text/javascript" src="js/subirFotos.js"></script>
+	
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7EBQlfMadq9avjFlnpyLN5JGC7oOIef4&callback=initMapCrearRuta"> </script>	
+	
+</head>
+
+<body class="headerFijo footerFijo" ng-controller="DatosUsuario">
+	
+	<div ng-if="usuario != null">
+	
+		<ng-include src="'plantillas/header.html'"></ng-include>
+
+		
+	<main ng-controller="ModificarRuta" ng-init="recuperarRuta()">
+
+       <div class="container paddingContainer">
+            <div class="card col-md-12">
+                <ul class="nav nav-tabs">
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="misRutas.html">Mis Rutas</a></li>
+                    <li><a href="estadisticas.html">Estadísticas</a></li>
+                    <li class="perfilPremium active"><a href="gestionarRutas.html">Gestionar Rutas</a></li>
+                    <li class="perfilPremium"><a href="crearRuta.html">Crear Rutas</a></li>
+                    <li class="perfilPremium"><a href="#gestionarPagos.html">Gestionar Pagos</a></li>
+                </ul>
+
+                <div class="tab-content paddingTabs">
+                
+					<!----------------- MODIFICAR RUTA ---------------->
+
+					
+					
+					
+					<div class="row">
+						<div class="col-md-8 map_crear_ruta" id="map" style="border: 2px solid black;">Mapa</div>
+					<div class="col-md-4" id="formCrearRuta">
+					
+						<form>
+						
+							
+							<div class="row">
+								<div class="col-md-11 col-md-offset-1">
+									<h3 class="top-margin-0"> Información sobre la Ruta </h3>
+								</div>
+							</div>
+							
+							<div class="row top-margin-20">
+								<div class="col-md-11 col-md-offset-1">
+									<label for="titulo" class="control-label">Titulo</label>
+									<input type="text" class="form-control" id="titulo" placeholder="Titulo" ng-model="titulo">
+								</div>
+							</div>
+							
+							<div class="row top-margin-20">
+								<div class="col-md-11 col-md-offset-1">
+									<label for="descripcion" class="control-label">Descripción</label>
+									<textarea id="descripcion" class="form-control" rows="3" ng-model="descripcion">
+									</textarea>
+								</div>
+							</div> 
+							
+							<div class="row top-margin-20">
+								<div class="col-md-11 col-md-offset-1">
+									<label for="fecha" class="control-label">Fecha</label>
+									<input type="date" class="form-control" id="fecha" ng-model="fecha">
+								</div>
+							</div>
+							
+							<div class="row top-margin-20">
+								<div class="col-md-5 col-md-offset-1">
+									<label for="hora" class="control-label">Hora de inicio</label>
+									<input type="text" class="form-control" id="hora" placeholder="Hora" ng-model="hora">
+								</div>
+								
+								<div class="col-md-5 col-md-offset-1">
+									<label for="duracion" class="control-label">Duración</label>
+									<input type="text" class="form-control" id="duracion" placeholder="Duracion" ng-model="duracion">
+								</div>
+							</div>
+
+							<div class="row top-margin-20">
+								<div class="col-md-11 col-md-offset-1">
+									<label for="inicio" class="control-label">Inicio</label>
+									<input type="text" class="form-control" id="inicio" placeholder="Inicio" ng-model="inicio">
+								</div>
+							</div>
+							
+							<div class="row top-margin-20">
+								<div class="col-md-11 col-md-offset-1">
+									<label for="llegada" class="control-label">Llegada</label>
+									<input type="text" class="form-control" id="llegada" placeholder="Llegada" ng-model="llegada">
+								</div>
+							</div>
+							
+							<div class="row top-margin-20">
+								<div class="col-md-5 col-md-offset-1">
+									<label for="precio" class="control-label">Precio</label>
+									<input type="text" class="form-control" id="precio" placeholder="€" ng-model="precio">
+								</div>
+								
+								<div class="col-md-5 col-md-offset-1">
+									<label for="capacidad" class="control-label">Capacidad</label>
+									<input type="text" class="form-control" id="capacidad" placeholder="Capacidad" ng-model="capacidad">
+								</div>
+							</div>
+							
+							<div class="row top-margin-20">
+								<div class="col-md-11 col-md-offset-1">
+									<input type="button" value="Modificar Ruta" class="btn btn-success" ng-click="pulsarModificarRuta()" />
+								</div>
+							</div>
+							
+							<div class="row top-margin-10">
+								<div class="col-md-11 col-md-offset-1">
+									<div>{{resultado}}</div>
+								</div>
+							</div>
+							
+											
+					</form>
+							  
+					</div>
+				</div>
+				
+				<!------------------------------------------------------------------>
+	
+	
+	
+	
+						
+				
+				</div>
+			</div> 
+		</div>
+		
+
+
+
+
+
+
+<!-- Codigo para la ventana de subir fotos -->
+	
+	
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Suba una o varias fotos</h4>
+      </div>
+      <div class="modal-body">
+      <form method="POST" action="/fotosRuta/subirFotosRuta" enctype="multipart/form-data">
+          <div class="form-group">
+		    <input type="hidden" name="_id" value="{{_id}}">
+            <label for="recipient-name" class="control-label">Fotos:</label>
+            <input type="file" id="files" name="files[]">
+          </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <input type="submit" class="btn btn-primary" value="Enviar Fotos">
+      </div>
+	  </form>
+    </div>
+  </div>
+</div>
+	
+	
+	
+	
+<!---------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------->
+        
+        
+        
+		<div class="container-fluid pie">
+			
+		</div>
+		
+	</main>
+		<ng-include src="'plantillas/footerFijo.html'"></ng-include>
+	</div>
+	
+	
+	<div ng-if="usuario == null">
+		<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+	</div>
+    
+	
+	
+	
+</body>
+</html>

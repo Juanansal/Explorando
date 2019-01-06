@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<title>Registro</title>
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="angularjs/angular.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_RegistroUsuario.js"></script>
+	
+	
+</head>
+<body id="bodyp">
+
+	<header>
+		<div class="navbar-inverse navbar-default navbar-fixed-top" style="border-bottom-width: 0px;">
+			<div class="container-fluid no-float">
+				<div class="navbar-header">
+                    
+					<a class="navbar-brand" href="index.html"><img id="logo_cabecera" alt="logo" height="30" src="imagenes/Explorando.png" > </a>
+				</div>
+				
+				
+				<div class="collapse navbar-collapse">
+				  <ul class="nav navbar-nav navbar-right">
+				  <li><a href="#" class="navbar-brand">¿Quieres ser guía?</a></li>
+					<li><a href="#">Mis Rutas</a></li>
+					<li><a href="#">Perfil</a></li>
+
+					<li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notificaciones  3 <span class="caret"></span></a>
+					  <ul class="dropdown-menu">
+						<li><a href="#">En un 1 día tienes una ruta</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#">Comenta en la ruta Madrid-Alicante</a></li>
+						<li><a href="#">Puntua al guia</a></li>
+					  </ul>
+					</li>
+					
+				  </ul>
+				</div>
+				
+				
+				
+				
+			</div>
+		</div>
+	</header>
+	
+	
+	
+	<main>
+
+		<div class="container paddingContainer" ng-controller="registroUsuario">
+            <div class="panel panel-default">
+                <div class="panel-heading">Registro</div>
+                <div class="panel-body">
+                    <form>
+                        
+                        <label for="usuario" class="control-label">Usuario</label>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" id="usuario" placeholder="Usuario" ng-model="usuario" ng-change="validarUsuario()"/>
+                            </div>  
+                        </div>
+						
+						<label for="contraseña" class="control-label">Contraseña</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="password" class="form-control" id="contraseña" placeholder="Contraseña" ng-model="pass1" ng-change="validarPass()"/>
+                            </div>
+
+							<div class="col-md-6">
+                                <input type="password" class="form-control" id="contraseña2" placeholder="Repita la contraseña" ng-model="pass2" ng-change="validarPass()"/>
+                            </div> 							
+                        </div>
+                        
+                        <label for="mail" class="control-label margenTop">Correo electrónico</label>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" id="mail" placeholder="Correo electrónico" ng-model="email" />
+                            </div>  
+                        </div>
+                        
+                        <label for="nombre" class="control-label margenTop">Nombre</label>
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" ng-model="nombre"/>
+                            </div>  
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" ng-model="apellidos"/>
+                            </div>
+                            
+                        </div>                   
+                        
+                        
+                        <label for="provincia" class="control-label margenTop">Direccion</label>
+                        <div class="row">
+                                                                   
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="provincia" placeholder="Provincia" ng-model="ciudad"/>
+                            </div>
+                        
+                        <button type="button" class="btn btn-primary pull-right" id="botonRegistro" ng-click="registrarUsuario()">Registrar</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+		<div class="container-fluid pie">
+			
+		</div>
+		
+	</main>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

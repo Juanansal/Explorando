@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<title>Perfil</title>
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+	
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_ModificarPerfil.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+    <script type="text/javascript" src="js/mapas.js"></script>
+	
+</head>
+
+<body class="headerFijo footerFijo" ng-controller="DatosUsuario" >
+	
+	<div ng-if="usuario != null">
+	
+		<ng-include src="'plantillas/header.html'"></ng-include>
+		
+	<main>
+
+       <div class="container paddingContainer">
+            <div class="card col-md-12">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="perfil.html">Perfil</a></li>
+                    <li><a href="misRutas.html">Mis Rutas</a></li>
+                    <li class="perfilPremium"><a href="gestionarRutas.html">Gestionar Rutas</a></li>
+                    <li class="perfilPremium"><a href="crearRuta.html">Crear Rutas</a></li>
+                    <li class="perfilPremium"><a href="#gestionarPagos.html">Gestionar Pagos</a></li>
+                </ul>
+
+                <div class="tab-content paddingTabs">
+                
+					<!----------------- MODIFICAR PERFIL ---------------->
+                    <h3> Modificar Perfil</h3>
+                    <div class="tab-pane fade in active" id="perfil">
+                    
+                        <div ng-controller="ModificarPerfil" ng-init="cargarUsuario()">
+                        <!-- Contenido tablita -->
+                        <form method="POST" action="/usuarios/subirFotoPerfil" enctype="multipart/form-data"> 
+                            <div class="row">
+                            <input type="hidden" name="_id" value="{{_id}}">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row" id="datosUsuario">
+
+
+
+                                        <!-- EMPIEZA EL Q TIENE EL ESTILO BUENO -->
+
+                                            <div class="row top-margin-15"> 
+                                                <div class="col-xs-3">
+                                                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> <label for="nombreForm"> <strong> Nombre </strong> </label>
+                                                </div>
+
+                                                <div class="col-xs-9">
+                                                  <input name="nombre" type="text" ng-model="nombre" id="nombreForm" />
+                                                </div>
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="row top-margin-15"> 
+                                                <div class="col-xs-3">
+                                                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> <label for="apellidosForm"> <strong> Apellidos </strong> </label>
+                                                </div>
+
+                                                <div class="col-xs-9">
+                                                  <input id="apellidosForm" name="apellidos" type="text" ng-model="apellidos" >
+                                                </div>                                           
+                                           
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="row top-margin-15"> 
+                                                <div class="col-xs-3">
+                                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <label for="emailForm"> <strong> Email </strong> </label>
+                                                </div>
+
+                                                <div class="col-xs-9">
+                                                  <input id="emailForm" name="email" type="text" ng-model="email" />
+                                                </div>	
+                                            </div>
+
+                                            <hr>										
+
+                                            <div class="row top-margin-15"> 
+                                                <div class="col-xs-3">
+                                                    <span class="glyphicon glyphicon-road" aria-hidden="true"></span> <label for="ciudadForm"> <strong> Ciudad </strong> </label>
+                                                </div>
+
+                                                <div class="col-xs-9">
+                                                  <input id="ciudadForm" type="text" ng-model="ciudad" />
+                                                </div>                                    	
+
+                                            </div>
+
+                                            <hr>
+                                            
+                                            <div class="row top-margin-15"> 
+                                                <div class="col-xs-3">
+                                                    <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> <label for="telefonoForm"> <strong> Telefono </strong> </label>
+                                                </div>
+
+                                                <div class="col-xs-9">
+                                                  <input id="telefonoForm" name="telefono" type="text" ng-model="telefono" />
+                                                </div>                                    	
+
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="row top-margin-15"> 
+                                                <div class="col-xs-3">
+                                                    <span class=" glyphicon glyphicon-upload" aria-hidden="true"></span> <label for="imagenForm"> <strong> Actualizar imagen </strong> </label>
+                                                </div>
+
+                                                <div class="col-xs-9">
+                                                  <input type="file" name="foto" id="inputFotoPerfil" accept="image/*" file-model="foto">
+                                                  <br />
+                                                  <output id="list"></output>
+                                                </div>										
+
+                                            </div>
+
+                                            <hr>																	
+                                       </div>
+                                </div>
+
+					
+                            </div>
+                            <div class="row col-xs-12">
+				                <div class="col-xs-6 col-md-3">
+								    <input type="submit" value="Modificar Datos" class="btn btn-success" ng-click="modificarPerfil()" />
+								</div>		
+										
+									
+								</div>
+								
+								<div class="top-margin-15"> {{mensaje}} </div>
+                        </form>
+						</div>
+				    </div>
+			    </div> 
+		    </div>
+
+
+        </div>
+	</main>
+
+	<ng-include src="'plantillas/footerFijo.html'"></ng-include>
+	
+	<!-- fin div zona correcta -->
+	</div>
+	
+	
+	<div ng-if="usuario == null">
+		<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+	</div>
+   
+    
+</body>
+
+
+
+
+</html>
+
+
+
+
+
+
+
+

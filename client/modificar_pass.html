@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<title>Perfil</title>
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_ModificarPass.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+    <script type="text/javascript" src="js/mapas.js"></script>
+	
+</head>
+<body class="headerFijo footerFijo" ng-controller="DatosUsuario">
+
+	<div ng-if="usuario != null">
+	
+		<ng-include src="'plantillas/header.html'"></ng-include>
+	
+	
+	<main>
+
+       <div class="container paddingContainer">
+            <div class="card col-md-12">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="perfil.html">Perfil</a></li>
+                    <li><a href="misRutas.html">Mis Rutas</a></li>
+                    <li><a href="estadisticas.html">Estadísticas</a></li>
+                    <li class="perfilPremium"><a href="gestionarRutas.html">Gestionar Rutas</a></li>
+                    <li class="perfilPremium"><a href="crearRuta.html">Crear Rutas</a></li>
+                    <li class="perfilPremium"><a href="#gestionarPagos.html">Gestionar Pagos</a></li>
+                </ul>
+
+                <div class="tab-content paddingTabs">
+                
+					<!----------------- CREAR RUTA ---------------->
+
+					<div class="container paddingContainer" ng-controller="ModificarPass">
+
+					<h3> Modificar contraseña de {{usuario}}</h3>
+					
+						<form>
+						<div class="row">
+						
+							<div>
+								<label> Nueva contraseña </label>
+								<input type="text" ng-model="nuevapass1" />
+							</div>
+							
+							<div>
+								<label> Repita la nueva contraseña </label>
+								<input type="text" ng-model="nuevapass2" />
+							</div>             							
+						</div>
+						
+						<div class="row">
+							<div>
+								<input type="button" value="Modificar Contraseña" class="btn btn-success" ng-click="modificarPass()" />
+							</div>
+						</div>
+						
+						<div class="top-margin-15"> {{mensaje}} </div>
+						</form>
+					</div> 
+				
+				<!------------------------------------------------------------------>
+		
+				</div>
+			</div> 
+		</div>	
+		
+	</main>
+	
+	<ng-include src="'plantillas/footerFijo.html'"></ng-include>
+	
+	<!-- fin div zona correcta -->
+	</div>
+	
+	<div ng-if="usuario == null">
+		<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+	</div>
+	
+	
+</body>
+</html>
+

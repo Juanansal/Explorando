@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<title>Pagina principal</title>
+	
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+	<script type="text/javascript" src="jsPDF/jspdf.min.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosRuta.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_ListadoRutas.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_ComentariosRuta.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_EscribirComentario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_GestionarReserva.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_Twitter.js"></script>
+	
+    <script type="text/javascript" src="js/mapas/mapa_Ruta.js"></script>
+	<script src="js/index.js"></script> 
+	
+	
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7EBQlfMadq9avjFlnpyLN5JGC7oOIef4&callback=initMapRuta">
+    </script>
+	
+	<!-- script para la imagen modal -->
+    <script>
+    $(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+    </script>
+	
+</head>
+
+<body class="headerFijo footerFijo" ng-controller="DatosUsuario">
+	
+	<div ng-if="usuario != ''" ng-controller="DatosRuta" ng-init="recuperarRuta()">
+	
+		<ng-include src="'plantillas/header.html'"></ng-include>	
+		<main>
+		<div class="container-fluid"> 
+			<div class="row" ng-controller="ListadoRutas" ng-init="dibujarRuta(_id)">
+				<div class="col-md-12 map_ruta" id="map">Mapa</div>
+			</div>
+		</div>
+		
+		
+	<div class="container-fluid containerSliderRuta">
+		<div class="col-xs-12">
+
+			<div class="well">
+				<div id="myCarousel1" class="carousel slide containerFotosRuta">
+					<!-- Carousel items -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<div class="row rowGallery">
+							   
+								<div class="col-xs-2" ng-repeat="f in fotos">                              
+									<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Im so nice" data-caption="foto modal 1" data-image="../client/imagenes/bosque_azul-1024x768.jpg" data-target="#image-gallery">
+									<img src="{{fotos[$index]}}" alt="Image" class="img-responsive">
+									</a>        
+								</div>
+
+							</div>
+							<!--/row-->
+						</div>
+					</div>
+
+				</div>
+				<!--/myCarousel-->
+			</div>
+			<!--/well-->
+		</div>
+	</div>
+		
+		
+		<div class="container top-margin-20">
+            
+            <div class="cardRuta  col-md-12">
+                <div id="ruta" class="row top-margin-20 informacionRuta" ng-controller="GestionarReserva" ng-init="puedeReservar()">
+
+                    <!-- 1º seccion -->
+                    <div class="col-md-9">
+                        <div class="row" id="ruta_s1">
+                            <div class="col-xs-4 col-sm-2 text-center lead"> 
+                                <a ng-href="perfilGuia.html?id={{guia}}"><img class="img-responsive" src="{{urlFotoGuia}}" alt="foto de guia"> <span>{{nombreGuia}} </span></a>
+                            </div>
+                            <div class="col-md-offset-1 col-xs-8 col-md-9"> 
+                                <div class="row top-margin-20">
+                                    <div> <h2 class="top-margin-0"> <strong> {{titulo}}</strong></h2> </div>
+									<div class="top-margin-20">
+										<div class="col-md-12" style="padding-left:10px;"> <h4 class="top-margin-0"> <strong>Inicio:</strong> {{inicio}}</h4> </div>
+										<div class="col-md-12" style="padding-left:10px;"> <h4 class="top-margin-0"> <strong>Final:</strong> {{llegada}}</h4> </div>
+										<div class="col-md-12" style="padding-left:10px;"> <h4 class="top-margin-0"> <strong>Fecha:</strong> {{fecha | date: "dd-MM-yyyy"}}</h4> </div>	
+										<div ng-show="votar == 0 || votar == 1 || votar == 2">
+												<div class="col-md-12" style="padding-left:10px;">
+													<h4 class="top-margin-0"> <strong>Puntua la ruta:</strong> 
+														<span class="cursor" ng-class="estrella1" ng-click="votarRuta(1,guia)" ng-mouseover="pintarEstrellaMouseover(1)" ng-mouseleave="quitarEstrellaMouseOver()" aria-hidden="true"></span>
+														<span class="cursor" ng-class="estrella2" ng-click="votarRuta(2,guia)" ng-mouseover="pintarEstrellaMouseover(2)" ng-mouseleave="quitarEstrellaMouseOver()" aria-hidden="true"></span>
+														<span class="cursor" ng-class="estrella3" ng-click="votarRuta(3,guia)" ng-mouseover="pintarEstrellaMouseover(3)" ng-mouseleave="quitarEstrellaMouseOver()" aria-hidden="true"></span>
+														<span class="cursor" ng-class="estrella4" ng-click="votarRuta(4,guia)" ng-mouseover="pintarEstrellaMouseover(4)" ng-mouseleave="quitarEstrellaMouseOver()" aria-hidden="true"></span>
+														<span class="cursor" ng-class="estrella5" ng-click="votarRuta(5,guia)" ng-mouseover="pintarEstrellaMouseover(5)" ng-mouseleave="quitarEstrellaMouseOver()" aria-hidden="true"></span>
+													</h4> 
+												</div>
+
+										</div>
+									</div>
+                                </div>
+
+                            </div>
+                        </div>	
+            
+                    </div>
+
+                    <div class="col-xs-12 col-md-3 estiloReservar">
+                           
+                            <div style="margin-top: 90px;"> 
+
+                                <h2 class="margin-top-5"> {{precio}} € </h2>
+
+                                    <div ng-show="boton == 0"> 
+                                        <input type="button" value="Reservar" class="btn btn-success pull-left" ng-click="enviarPaypal()" />
+                                    </div>
+									
+									 <div ng-show="boton == 1"> 
+                                        <input type="button" value="Ruta completa" class="btn btn-danger pull-left" />
+                                    </div>
+
+                                    <div ng-show="boton == 2"> 
+                                        <input type="button" style="margin: 2px;" value="Cancelar" class="btn btn-danger pull-left" ng-click="cancelarReserva()" />
+										<input type="button" style="margin: 2px;" value="Descargar recibo" class="btn btn-success pull-left" ng-click="generarPDF()" />
+                                    </div>
+                                    
+                                    <div class="col-xs-12 margin-top-20" style="padding-left: 0px;">
+                                        <p class="top-margin-8"> {{resultado}} </p>
+                                    </div>
+                            </div>
+
+                    </div>
+                </div>
+                        <hr class="hrRuta">
+        
+                        <!-- 2º Seccion -->
+                        <div class="cardRuta row col-md-12 align-center" id="ruta_s2">
+                            <h4><strong> Información </strong></h4>
+                            {{descripcion}}
+
+                        </div>
+
+                        <!-- 3º Seccion -->
+						
+						<div ng-controller="ComentariosRuta" ng-init="mostrarComentarios()">
+							<div class="cardRuta row col-md-12" id="ruta_s3">
+								<h4><strong> Comentarios </strong></h4>
+								
+								<div ng-controller="Twitter">
+                                    <div class="row comentarioBloque" ng-repeat="item in comentarios">
+                                        <div class="col-sm-12 col-xs-12 text-center" style="border-bottom:1px solid #BBB;">
+                                            <div class="col-xs-1" style="padding: 0px;">
+                                                <img class="img-responsive" src="{{item.url}}" alt="Usuario sin foto">
+                                            </div>
+
+                                             <div class="col-xs-10 tituloComent" style="padding: 0px; margin-left: 10px;">
+                                                <p class="text-left usuarioC" style="font-weight: bold;">{{item.nombreUsuarioCom}}   
+												   
+												</p>
+                                                <p class="text-left fechaC"> {{item.fecha | date: "dd-MM-yyyy"}}  </p>	
+												<hr style="margin-bottom:5px; float:left;">
+												<p style="text-align:left; margin-bottom:20px;"> {{item.comentario}} </p>
+												 
+												  <div ng-if="usuario == item.usuarioCom && esTwitter=='true'">
+														<div style="text-align:left;" class="cursor" ng-click="twittear(item.comentario, item.usuarioCom)">
+															<img src="imagenes/iconos/iconoTwitter.png" alt="Twitter"> Twittear
+														</div>
+													</div>
+												
+                                            </div>
+
+                                        </div>
+                                       
+                                        
+
+                                    </div>
+                                    
+                                    
+								</div>
+								
+
+							</div>				
+		
+							<!-- 4º Seccion -->
+							<div class="cardRuta row col-md-12" id="ruta_s4 col-md-12">
+								<h4><strong> Escribir comentario </strong></h4>
+								
+
+								<div class="col-md-12">
+									<form>
+										<textarea class="form-control" rows="3" ng-model="comentario"></textarea>
+										 <input type="button" value="Enviar comentario" class="btn btn-success top-margin-8" ng-click="guardarComentario()" />
+									</form>
+									<p class="top-margin-6">{{resultado}}</p>
+								</div>
+
+
+							</div>	
+						</div>
+                        <!-- 5º seccion -->
+                      
+
+
+
+                    
+                </div>
+			
+            
+
+
+			
+		</div>
+		
+		</main>
+		
+		<ng-include src="'plantillas/footerNoFijo.html'"></ng-include>
+	
+	</div>
+
+	<div ng-if="usuario == ''">
+		<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+	</div>
+	
+    
+</body>
+</html>

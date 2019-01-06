@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<title>Pagina principal</title>
+	
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="/js/controladores/controlador_ListadoRutas.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosRuta.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_ComentariosRuta.js"></script>
+    <script type="text/javascript" src="js/mapas/mapa_MisRutas.js"></script>
+	<script src="js/index.js"></script>
+	
+	
+	<style>
+	  .thumb {
+		height: 400px;
+		border: 1px solid #000;
+		margin: 10px 5px 0 0;
+	  }
+	</style>
+	
+	
+</head>
+
+<body class="headerFijo footerFijo" ng-controller="DatosUsuario">
+	
+	<div ng-if="usuario != null">
+	
+		<ng-include src="'plantillas/header.html'"></ng-include>
+
+	<main ng-controller="DatosRuta" ng-init="initDatosRuta()">
+
+       <div class="container paddingContainer">
+            <div class="card col-md-12">
+                <ul class="nav nav-tabs">
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="misRutas.html">Mis Rutas</a></li>
+                    <li class="perfilPremium active"><a href="gestionarRutas.html">Gestionar Rutas</a></li>
+                    <li class="perfilPremium"><a href="crearRuta.html">Crear Rutas</a></li>
+                    <li class="perfilPremium"><a href="gestionarPagos.html">Gestionar Pagos</a></li>
+                </ul>
+
+                <div class="tab-content paddingTabs">
+                
+					<!----------------- CREAR RUTA ---------------->
+
+				<div class="col-md-12"> <h2 class="text-center"> Ruta {{titulo}}</h2></div>	
+					
+				
+					
+					
+					
+				<div class="row top-margin-15">
+				  <div class="col-md-12"> 
+				  
+				    <div class="panel panel-default">
+				        <div class="panel-heading tituloGestionarRutas">
+                            <div class="row">
+                                <div class="col-md-6"> <span>Inicio: </span>{{inicio}} </div>
+                                <div class="col-md-6"> <span>Llegada: </span>{{llegada}} </div>
+                            </div>
+                        </div>	
+					</div>
+				
+					<div class="panel panel-default">
+					  <div class="panel-heading tituloGestionarRutas">Usuarios apuntados</div>
+					  
+					  <table class="table table-striped disenyotabla">
+						<thead>
+							<tr>
+								<th> Nombre </th>
+								<th> Apellidos </th>
+								<th> Email </th>
+								<th> Fecha Reserva </th>
+								
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr ng-repeat="u in dataUsuarios">
+								<td> {{u.nombre}}</td>
+								<td> {{u.apellidos}}</td>
+								<td> {{u.email}}</td>
+								<td> {{usuarios[$index].fecha | date: "dd-MM-yyyy"}}</td>
+							</tr>
+						</tbody>
+				      </table>
+					  
+
+					</div>
+					
+					<div class="panel panel-default" ng-controller="ComentariosRuta" ng-init="mostrarComentarios()">
+					  <div class="panel-heading tituloGestionarRutas">Comentarios registrados</div>
+					  
+					  <table class="table table-striped disenyotabla">
+						<thead>
+							<tr>
+								<th> Usuario </th>
+								<th> Comentario </th>
+								<th> Fecha </th>
+								<th></th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr ng-repeat="c in comentarios">
+								<td> {{c.nombreUsuarioCom}}</td>
+								<td> {{c.comentario}}</td>
+								<td> {{c.fecha | date: "dd-MM-yyyy"}}</td>
+								
+								<td> <a ng-click="eliminarComentario(c._id)" class="cursor"> Eliminar </a> </td>
+							</tr>
+						</tbody>
+				      </table>
+					  
+
+					</div>
+					
+				
+				  </div>
+				</div>
+				
+				<!------------------------------------------------------------------>
+	
+						
+				
+				</div>
+			</div> 
+		</div>
+              
+
+		<div class="container-fluid pie">
+			
+		</div>
+		
+	</main>
+	
+	<ng-include src="'plantillas/footerFijo.html'"></ng-include>
+	
+	<!-- fin div zona correcta -->
+	</div>	
+	
+	<div ng-if="usuario == null">
+		<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+	</div>
+	
+</body>
+</html>

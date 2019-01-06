@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<title>Perfil</title>
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosUsuario.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_CerrarSesion.js"></script>
+		<script type="text/javascript" src="js/controladores/controlador_CrearRuta.js"></script>
+    <script type="text/javascript" src="js/mapas/mapa_CrearRuta.js"></script>
+	
+	
+</head>
+<body class="headerFijo footerFijo" ng-controller="DatosUsuario" ng-init="cargarUsuario()">
+
+	<div ng-if="usuario != null">
+
+	<ng-include src="'plantillas/header.html'"></ng-include>
+
+	<main>
+
+       <div class="container paddingContainer">
+            <div class="card  col-md-12">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="perfil.html">Perfil</a></li>
+                    <li><a href="misRutas.html">Mis Rutas</a></li>
+                    <li class="perfilPremium"><a href="gestionarRutas.html">Gestionar Rutas</a></li>
+                    <li class="perfilPremium"><a href="crearRuta.html">Crear Rutas</a></li>
+                    <li class="perfilPremium"><a href="gestionarPagos.html">Gestionar Pagos</a></li>
+                </ul>
+
+                <div class="tab-content paddingTabs">
+                
+					<!----------------- PERFIL ---------------->
+					
+						<div class="tab-pane fade in active" id="perfil">
+							<div class="row">
+								<div class="col-xs-12 col-sm-3 col-md-3">
+									<img class="img-responsive" src="{{urlFoto}}" alt="fotoPerfil">
+								</div>
+								<div class="col-xs-12 col-sm-9 col-md-9">
+									<div class="row" id="datosUsuario">
+										
+										
+										<div ng-if="esTwitter=='false'">
+										<hr class="top-margin-0">
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-user" aria-hidden="true"></span> <strong> Usuario </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{usuario}}
+											</div>											
+											
+										</div>
+										</div>
+										
+										<hr>
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> <strong> Nombre </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{nombre}}
+											</div>											
+											
+										</div>
+										
+										<hr>
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> <strong> Apellidos </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{apellidos}}
+											</div>											
+											
+										</div>
+										
+										<hr>
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <strong> Email </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{email}}
+											</div>											
+											
+										</div>
+										
+										<hr>										
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-road" aria-hidden="true"></span> <strong> Ciudad </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{ciudad}}
+											</div>											
+											
+										</div>
+										
+										<hr>
+										
+										<div class="row top-margin-15"> 
+											<div class="col-xs-3">
+												<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> <strong> Telefono </strong>
+											</div>
+											
+											<div class="col-xs-9">
+											  {{telefono}}
+											</div>											
+											
+										</div>
+										
+										<hr>																	
+								   </div>
+								</div>
+
+
+							</div>
+							<div class="top-margin-5">
+								<div class="col-md-2 opcionesPerfil"><a href="modificar_perfil.html"><i class="fa fa-cog"></i>&nbsp;Modificar perfil</a></div>
+							</div>						
+						</div>
+				
+				</div>
+			</div> 
+		</div>       
+        
+		</main>
+		<ng-include src="'plantillas/footerFijo.html'"></ng-include>
+	
+	</div>
+	
+	<div ng-if="usuario == null">
+		<ng-include src="'plantillas/zona_privada.html'"></ng-include>
+	</div>
+	
+</body>
+</html>

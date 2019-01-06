@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+   <head>
+      <meta charset="utf-8" />
+      <title> Clientes </title>
+      <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+      <script type="text/javascript" src="../angularjs/angular.js"></script>
+      <script type="text/javascript" src="../js/init.js"></script>
+	  <script type="text/javascript" src="../js/controladores/controlador_AdminUsuarios.js"></script>
+	  
+       
+   </head>
+   <body>
+        <div class="container" ng-controller="AdminUsuarios" ng-init="cargarClientes()">
+            <h1> Administrar Usuarios </h1>
+            <form action="javascript:void(0);">
+                <div class="row">
+					<div class="span4">
+                        <label> Usuario </label>
+                        <input type="text" ng-model="usuario" />
+                    </div>
+					
+					<div class="span4">                    
+                        <label> Pass </label>
+                        <input type="text" ng-model="pass" />
+                    </div>
+				
+                    <div class="span4">
+                        <label> Nombre </label>
+                        <input type="text" ng-model="nombre" />
+                    </div>
+					
+					<div class="span4">
+                        <label> Apellidos </label>
+                        <input type="text" ng-model="apellidos" />
+                    </div>
+                    
+                    <div class="span4">
+                        <label> Email </label>
+                        <input type="text" ng-model="email" />
+                    </div>
+					
+                    <div class="span4">
+                        <label> Telefono </label>
+                        <input type="text" ng-model="telefono" />
+                    </div>
+					
+					<div class="span4">
+                        <label> Ciudad </label>
+                        <input type="text" ng-model="ciudad" />
+                    </div>
+					
+                </div>
+                <div class="row">
+                    <div class="span4">
+                        <input type="submit" value="Guardar" class="btn btn-success" ng-click="guardarUsuario()" />
+                        <input type="button" value="Limpiar" class="btn btn-danger" ng-click="limpiarDatos()" />
+						<input type="button" value="TEST" class="btn btn-danger" ng-click="comprobarUsuario()" />
+                    </div>
+                </div>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+						<th> Usuario </th>
+						<th> Pass </th>
+                        <th> Nombre </th>
+						<th> Apellidos </th>
+                        <th> Email </th>
+                        <th> Telefono </th>
+                        <th> Ciudad </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in rutas">
+                        <td> {{item.usuario}}</td>
+						<td> {{item.pass}} </td> 
+                        <td> {{item.nombre}} </td>
+                        <td> {{item.apellidos}} </td>
+                        <td> {{item.email}} </td>
+						<td> {{item.telefono}} </td>
+						<td> {{item.ciudad}} </td>
+                        <td> <a href="javascript:void(0);" class="btn btn-info" ng-click="recuperarCliente(item._id)"> Editar </a> </td>
+                        <td> <a href="javascript:void(0);" class="btn btn-danger" ng-click="eliminarCliente(item._id)"> Eliminar </a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="aplicacion">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<title>Pagina principal</title>
+	
+	
+	<script type="text/javascript" src="jquery/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/angularjs/angular.js"></script>
+	<script type="text/javascript" src="jsPDF/jspdf.min.js"></script>
+    <script type="text/javascript" src="/js/init.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_DatosRuta.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_GestionarReserva.js"></script>
+	<script type="text/javascript" src="js/controladores/controlador_Twitter.js"></script>
+	
+    <script type="text/javascript" src="js/mapas/mapa_Ruta.js"></script>
+	<script src="js/index.js"></script> 
+	
+	<!-- script para la imagen modal -->
+	
+</head>
+
+<body>
+
+	<div id="ruta" class="row top-margin-20 informacionRuta" ng-controller="GestionarReserva" ng-init="guardarReserva()">
+	</div>
+	
+</body>
+</html>
